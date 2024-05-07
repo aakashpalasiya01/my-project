@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import { deleteUserById, getUsers } from "redux/action/Users";
 import { forSuccess, isDialogOpen } from "utils/common/CommonService";
 import { useNavigate } from "react-router-dom";
-import ConfirmDialog from "components/shared/common-dialog";
 const UserTable = ({ totalCount, pagination, setPagination, userList }) => {
   const [userData, setUserData] = useState([]);
   const navigate = useNavigate();
