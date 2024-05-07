@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - mv .env.example .env
+      - sed -i "s#REACTAPPFRONTENDURL#$REACTAPPFRONTENDURL#g" .env 
+      - sed -i "s#REACTAPPBASEURL#$REACTAPPBASEURL#g" .env
+      - echo Installing source NPM dependencies...
+      - npm install
+  build:
+    commands:
+      - echo Build started on 'date'
+      - npm run build
+  post_build:
+    commands:
+      # copy the contents of /build to S3
+       - aws s3 rm s3://$BUCKET_NAME --recursive
+       - aws s3 cp --recursive --acl public-read ./build/ s3://$BUCKET_NAME/
+       - aws cloudfront create-invalidation --distribution-id $DIST_ID --paths '/*'
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build

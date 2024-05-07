@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.781" height="19.781" viewBox="0 0 19.781 19.781">
+  <g id="vuesax_linear_close-circle" data-name="vuesax/linear/close-circle" transform="translate(-5 -3)">
+    <g id="close-circle" transform="translate(5 3)">
+      <path id="Vector" d="M8.242,16.484A8.242,8.242,0,1,0,0,8.242,8.266,8.266,0,0,0,8.242,16.484Z" transform="translate(1.648 1.648)" fill="none" stroke="#db0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-2" data-name="Vector" d="M0,4.665,4.665,0" transform="translate(7.558 7.558)" fill="none" stroke="#db0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-3" data-name="Vector" d="M4.665,4.665,0,0" transform="translate(7.558 7.558)" fill="none" stroke="#db0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-4" data-name="Vector" d="M0,0H19.781V19.781H0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

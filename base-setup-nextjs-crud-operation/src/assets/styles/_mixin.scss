@@ -1,0 +1,29 @@
+// Border radius mixin
+@mixin border-radius($value) {
+    -webkit-border-radius: $value;
+    -moz-border-radius: $value;
+    border-radius: $value;
+}
+
+// transition mixin
+@mixin transition($transition-value: all 0.5s) {
+    -webkit-transition: $transition-value;
+    -moz-transition: $transition-value;
+    transition: $transition-value;
+}
+
+// Box shadow mixin
+@mixin box-shadow($top, $left, $blur, $color) {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+}
+
+// Display flex placeholder
+%theme-flex{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}

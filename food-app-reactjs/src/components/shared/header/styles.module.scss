@@ -1,0 +1,32 @@
+.header {
+    background-color: #ffffff;
+    padding: 8px 16px;
+    height: 70px;
+    position: sticky;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid #d0c2c2;
+    z-index: 999;
+    .user_dropdown {
+        text-align: right;
+        button {
+            background-color: transparent !important;
+            color: #505050 !important;
+            border: 0 !important;
+            &:after {
+                display: none;
+            }
+            &:hover, &:focus {
+                background-color: transparent;
+                border: 0;
+                color: #505050;
+                box-shadow: none !important;
+            }
+            svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+}

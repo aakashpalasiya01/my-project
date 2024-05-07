@@ -1,0 +1,55 @@
+@import "bootstrap-scss/bootstrap";
+@import "function";
+@import "mixins";
+@import "custom_variables";
+@import "typography";
+@import "utilities";
+@import "reset";
+@import "button_styles";
+@import "header";
+@import "footer";
+@import "confirm_dialog";
+@import "login";
+@import "custom"; 
+@import "chat";
+@import "media";
+@import "developer";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+.scroll{
+  overflow: auto;
+  scrollbar-color: #a5cbf7 #ffffff;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #ffffff;
+  }
+  &::-webkit-scrollbar{
+    width: 9px;
+    height: 9px;
+    background-color: #1D2858;
+  }
+  &::-webkit-scrollbar-thumb{
+    background-color: #1D2858;
+  }
+}
+input {
+  &:focus-visible {
+    outline: 0px !important;
+  }
+}
+
+@media(min-width:1366px) {
+  .container {
+    max-width: 1366px;
+  }
+}

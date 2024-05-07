@@ -1,0 +1,92 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-west-2:686878367233:task-definition/gymanstify-react-taskdef:2",
+    "containerDefinitions": [
+        {
+            "name": "gymanstify-react",
+            "image": <IMAGE_NAME>,
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "gymanstify-react",
+                    "containerPort": 3000,
+                    "hostPort": 0,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/gymanstify-react-taskdef",
+                    "awslogs-region": "us-west-2",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "gymanstify-react-taskdef",
+    "taskRoleArn": "arn:aws:iam::686878367233:role/ai-poc1-api-taskdefexecution",
+    "executionRoleArn": "arn:aws:iam::686878367233:role/ecsTaskExecutionRole",
+    "revision": 2,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "memory": "717",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2024-04-01T19:37:27.823Z",
+    "registeredBy": "arn:aws:iam::686878367233:user/KarthikeyanM",
+    "tags": [
+        {
+            "key": "Env",
+            "value": "staging"
+        },
+        {
+            "key": "Application",
+            "value": "gymanstify-react"
+        }
+    ]
+}

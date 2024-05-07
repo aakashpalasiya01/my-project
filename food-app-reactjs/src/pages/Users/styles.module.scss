@@ -1,0 +1,81 @@
+.user_page {
+    padding: 20px;
+    .search_bar {
+        display: flex;
+        padding: 20px;
+        background-color: #fff;
+        margin-bottom: 30px;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 3px;
+        .search_div {
+            display: flex;
+            width: 385px;
+            position: relative;
+            svg {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 10px;
+                cursor: pointer;
+
+            }
+        }
+    }
+}
+.add_access_code {
+    padding: 20px;
+    width: 320px;
+    h2 {
+        font-size: 22px;
+        font-weight: 600;
+    }
+    small {
+        font-size: 10px;
+        line-height: 14px;
+        display: block;
+        margin-top: 3px;
+    }
+    label {
+        font-size: 13px;
+        color: #333;
+        font-weight: 600;
+        span {
+            padding: 5px 0;
+        }
+    }
+}
+.invitation {
+    .invitation_change {
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 5px;
+        min-height: calc(100vh - 170px);
+        display: flex;
+        flex-wrap: wrap;
+        form {
+            width: 60%;
+        }
+        .buttons {
+            width: 40%;
+            text-align: right;
+            a {
+                display: inline-block;
+                text-decoration: none;
+                font-size: 13px;
+                text-transform: uppercase;
+                font-weight: 500;
+                color: #fff;
+                background: #776f6f;
+                padding: 7px 14px;
+                border-radius: 3px;
+                margin-left: 10px;
+                box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+            }
+        }
+    }
+}
+.SearchUser{
+    margin-left: 3px;
+}

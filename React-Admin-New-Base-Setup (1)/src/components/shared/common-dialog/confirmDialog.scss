@@ -1,0 +1,170 @@
+.react-confirm-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  background: rgba(0, 0, 0, 0.5);
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+@-webkit-keyframes react-confirm-alert-fadeIn {
+  33% {
+    transform: scale(0);
+  }
+  66% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes react-confirm-alert-fadeIn {
+  33% {
+    transform: scale(0);
+  }
+  66% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@-o-keyframes react-confirm-alert-fadeIn {
+  33% {
+    transform: scale(0);
+  }
+  66% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes react-confirm-alert-fadeIn {
+  33% {
+    transform: scale(0);
+  }
+  66% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.react-confirm-alert-overlay{
+  .confirmModel {
+    background: #fff;
+    width: 500px;
+    border: 0 solid #e2e5ec;
+    border-radius: 5px;
+    animation: react-confirm-alert-fadeIn 0.3s forwards;
+    transform: scale(0);
+    .modelHeader {
+        text-align: right;
+        padding: 10px 15px;
+        border-bottom: 1px solid #dee2e6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h4 {
+          margin-bottom: 0;
+          font-weight: bold;
+          font-size: 19px;
+          letter-spacing: .4px;
+        }
+        button {
+            padding: 0;
+            background: none;
+            border: 0;
+            color: #000;
+            opacity: 0.5;
+            font-size: 23px;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            cursor: pointer;
+            text-shadow: 0 1px 0 #fff;
+            &:hover {
+                opacity: 1;
+            }
+            img {
+                width: 18px;
+                vertical-align: top;
+                margin: 5px 0 0;
+                display: inline-block;
+            }
+        }
+    }
+    .modelBody {
+        text-align: center;
+        padding: 20px 15px;
+        color: #242424;
+        h3 {
+            color: #242424;
+            font-size: 20px;
+            font-weight: 400;
+            margin: 0 0 46px;
+        }
+        p {
+            color: #242424;
+            margin: 0;
+            font-size: 15px;
+            font-weight: 400;
+            text-align: left;
+        }
+        .comonWdth {
+            button {
+                display: inline-block;
+                margin: 0 5px;
+                padding: 12px;
+                font-size: 14px;
+                min-width: 100px;
+            }
+            .cancelText {
+                background: #6c757d;
+                border: 1px solid #6c757d;
+                &:hover,
+                &:focus {
+                    background-color: #5a6268;
+                    border: 1px solid #545b62;
+                }
+            }
+            .confirmText {
+                background: #f15e5e;
+                &:hover,
+                &:focus {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+  }
+}
+.commonModelFooter {
+  padding: 15px 15px 15px 15px;
+  border-top: 1px solid #dee2e6;
+  text-align: right;
+}
+
+@media screen and (max-width: 767px) {
+  .confirmModel {
+      width: 100%;
+  }
+  .comonWdth {
+      button {
+          display: block;
+          width: 100%;
+      }
+  }
+}

@@ -1,0 +1,15 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
+.card h4 .para-financial {
+  display: block;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  margin-top: 7px;
+  opacity: 0.6;
+}
+.radial-bar {
+  height: 404px;
+}

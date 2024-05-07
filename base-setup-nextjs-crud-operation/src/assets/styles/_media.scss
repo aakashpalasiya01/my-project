@@ -1,0 +1,143 @@
+@media (max-width: 1600px){
+    .main-content .side-bar {
+        width: 260px;
+    }
+    .main-content .content-wrapper {
+        width: calc(100% - 260px);
+        margin-left: 260px;
+    }
+    .nav-header, .dlabnav{
+        width: 260px;
+    }
+    .exp_card_wrapper .exp_card_amnt h2{
+        font-size: 22px;
+        line-height: 32px;
+    }
+    
+    .other_card .other_card_cont h3{
+        font-size: 16px;
+    }
+    
+}
+@media (min-width: 1400px) and (max-width: 1600px){
+    .exp_card_wrapper{
+        padding: 17px;
+    }
+    .other_card{
+        padding: 15px;
+    }
+    .contact_card .contact_card_cont a {
+        font-size: 14px;
+    }
+}
+@media (max-width: 1400px){
+    #content {
+        padding: 10px;
+    }
+    #header ul{
+        padding: 20px 25px;
+    }
+    .nav-header .nav-control{
+        right: -5rem;
+    }
+    .right_other_card {
+        height: auto;
+        margin-top: 24px;
+    }
+}
+@media (min-width: 991px){
+    .menu-toggle {
+        .nav-header {
+            width: 91px;
+            .brand-logo {
+                padding: 24px;
+            }
+            .logo {
+                img {
+                    display: none;
+                }
+            }
+        }
+        .dlabnav {
+            width: 91px;
+            .metismenu > li > .accordion-item > button > span {
+                display: none;
+            }
+            .metismenu > li > .accordion-item > button:after {
+                display: none;
+            }
+            .metismenu > li > .accordion-item > .accordion-collapse {
+                display: none;
+            }
+        }
+        .copyright {
+            display: none;
+        }
+    }
+}
+@media (max-width: 991px){
+    .main-content .side-bar{
+        left: -300px;
+    }
+    .main-content .content-wrapper {
+        width: 100%;
+        margin-left: 0;
+    }
+    #content {
+        padding: 0;
+    }
+    #header ul{
+        padding: 20px 15px;
+        gap: 20px;
+    }
+    .main-content .side-bar.menu-toggle + .content-wrapper {
+        width: 100%;
+        margin-left: 0;
+    }
+    .nav-header .nav-control{
+        right: -112px;
+        top: 22px;
+    }
+    .main-content .side-bar.menu-toggle{
+        left: 0;
+        width: 260px;
+    }
+    .nav-header, .dlabnav{
+        background-color: #012967;
+    }
+}
+@media (max-width: 767px){
+    .contact_card{
+        padding: 10px 0;
+    }
+    .contact_card:hover {
+        box-shadow: none;
+        background: transparent;
+    }
+    #header ul li .header-profile {
+        padding: 7px 0;
+        box-shadow: none;
+        background: transparent;
+        min-width: auto;
+    }
+    .dropdown strong, .dropdown small{
+        display: none !important;
+    }
+    #header ul li .header-profile::after{
+        right: 0;
+    }
+    #header ul li .header-profile span {
+        margin-right: 20px;
+    }
+    .balance_chart_cont{
+        padding: 0 15px;
+    }
+    .card.balance_card h4{
+        padding: 24px 15px 20px;
+    }
+}
+@media (max-width: 480px){
+    #header ul li .search-bar input {
+        width: 150px;
+    }
+}

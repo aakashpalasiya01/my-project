@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+  <g id="facebook" transform="translate(-150 -6092)">
+    <g id="facebook-logo_1_" data-name="facebook-logo (1)">
+      <path id="Path_63" data-name="Path 63" d="M170.822,6107.208v-1.9a4.189,4.189,0,0,1,.04-.661,1.282,1.282,0,0,1,.18-.46.735.735,0,0,1,.454-.313,3.226,3.226,0,0,1,.835-.087h1.9V6100H171.2a4.932,4.932,0,0,0-3.778,1.248,5.259,5.259,0,0,0-1.148,3.678v2.283H164V6111h2.27v11h4.552v-11h3.03l.4-3.791Z" fill="#fff"/>
+    </g>
+    <g id="Ellipse_16" data-name="Ellipse 16" transform="translate(150 6092)" fill="none" stroke="#707070" stroke-width="1">
+      <circle cx="19" cy="19" r="19" stroke="none"/>
+      <circle cx="19" cy="19" r="18.5" fill="none"/>
+    </g>
+  </g>
+</svg>
