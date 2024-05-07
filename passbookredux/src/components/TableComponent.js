@@ -9,7 +9,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -33,8 +33,9 @@ const TableComponent = () => {
           <TableBody>
             {passbook?.map((row, index) => (
               <TableRow
-                key={index}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              key={index}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+             
               >
                 <TableCell align="right">{index + 1}</TableCell>
                 <TableCell align="right">{row?.date}</TableCell>
@@ -45,6 +46,7 @@ const TableComponent = () => {
                 </TableCell>{" "}
                 <TableCell align="right">{row?.transactiontype}</TableCell>
                 <TableCell align="right">{row?.transactionamount}</TableCell>
+              
                 <TableCell align="right"> {row?.remainingAmount}</TableCell>
              
               </TableRow>
