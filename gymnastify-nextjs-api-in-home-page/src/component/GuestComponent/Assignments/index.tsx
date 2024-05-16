@@ -1,33 +1,39 @@
 'use client'
-import React from 'react';
-import elevateyour from "@/assets/images/backgrounds/elevate_your.jpg";
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { assignments } from '@/mystore/actions/homeActions';
+import { useAppDispatch, useAppSelector } from '@/mystore/hooks';
+import { RootState } from '@/mystore/store';
 import Link from 'next/link';
-import { RootState } from '@/store/store';
 
 const Assignments = () => {
-  const AssignmentsData = useSelector(
-    (state :RootState) => state.home?.assignment?.data
-  );
+  const dispatch = useAppDispatch();
 
-  
+  let AssignmentDatafunc = async () => {
+   dispatch(assignments());
+  };
+
+  useEffect(()=>{
+    AssignmentDatafunc()
+
+  },[])
+  const {assignment} = useAppSelector((state:RootState) => state?.home);
   return (
     <section className="elevate_your">
         <div className="container">
             <div className="row">
               <div className="col-xl-6">
                   <div className="elevate_img">
-                    <img alt="icons" width="652" height="160" src={AssignmentsData?.background_image?.url}/>
+                    <img alt="icons" width="652" height="160" src={assignment?.background_image?.url}/>
                   </div>
               </div>
               <div className="col-xl-6">
                   <div className="elevate_content">
-                    <h4>{AssignmentsData?.top_heading}</h4>
-                    <p>{AssignmentsData?.title}</p>
+                    <h4>{assignment?.top_heading}</h4>
+                    <p>{assignment?.title}</p>
                     <div className="elevate_btn">
-                      <Link href={AssignmentsData?.button?.link || "#"}>
+                      <Link className="white_btn btn_blockmd" href= '#'>{assignment?.button?.name}
                       </Link>
-                      <button className="white_btn btn_blockmd">{AssignmentsData?.button?.name}</button>
+                 
                     </div>
                   </div>
               </div>

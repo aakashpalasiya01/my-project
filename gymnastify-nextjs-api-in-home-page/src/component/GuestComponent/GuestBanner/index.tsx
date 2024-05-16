@@ -1,16 +1,15 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import {useSelector } from "react-redux";
 import Link from "next/link";
-import { RootState } from "@/store/store";
+import { useAppSelector } from "@/mystore/hooks";
+import { RootState } from "@/mystore/store";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const GuestBanner = () => {
-  const bannerdata = useSelector(
-    (state :RootState) => state?.home?.guesthome[0]?.acf_fields?.hero_section
+  const guesthome = useAppSelector((state: RootState) => state?.home?.guesthome?.hero_section
   );
-
-
   return (
     <section className="guest_banner">
       <div className="container">
@@ -18,28 +17,36 @@ const GuestBanner = () => {
           <div className="col-lg-6">
             <div className="guest_content">
               <div className="guest-title">
-                <h1>{bannerdata?.heading}</h1>
-                <p>{bannerdata?.description}</p>
+                <h1>{guesthome?.heading}</h1>
+                <p>{guesthome?.description}</p>
               </div>
               <div className="subnow_link">
-                <Link href= {bannerdata?.primary_button?.link?.url || '#'}>
-                <button className="primary_btn btn_blockmd">
-                  {bannerdata?.primary_button?.button_name}
-                </button>
+                <Link href={guesthome?.primary_button?.link?.url || "#"}>
+                  <button className="primary_btn btn_blockmd">
+                    {guesthome?.primary_button?.button_name}
+                  </button>
                 </Link>
               </div>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="guest_img">
-              <Image
-                src={bannerdata && bannerdata?.image}
-                className="img-fluid"
-                alt="guest banner"
-                width={332}
-                height={403}
-                style={{width:'auto', height:'auto'}}
-              />
+              {guesthome ? (
+                <Image
+                  src={guesthome?.image}
+                  className="img-fluid"
+                  alt="guest banner"
+                  width={332}
+                  height={403}
+                  style={{ width: "auto", height: "auto" }}
+                />
+              ) : (
+                <div className="guest_img">
+                  <SkeletonTheme baseColor="#fff" highlightColor="#444">
+                    <Skeleton width={432} height={503} />
+                  </SkeletonTheme>
+                </div>
+              )}
             </div>
           </div>
         </div>

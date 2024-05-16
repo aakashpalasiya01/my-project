@@ -1,6 +1,5 @@
 'use client';
-// import { store } from "@/store/store";
-import store  from '@/mystore/store'
+import {store}  from '@/mystore/store'
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import CommonDialog from "@/shared/common-dialog";

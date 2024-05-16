@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import { settings } from "@/utils/commonsettings";
 import Slider from "react-slick";
 import Image from 'next/image';
-import testimonials from "@/assets/images/testimonials.png";
 import ratinghicn from "@/assets/images/icons/ratingh_icn.svg";
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/store';
+
+import { useAppDispatch, useAppSelector } from '@/mystore/hooks';
+import { testimonials } from '@/mystore/actions/homeActions';
+import { RootState } from '@/mystore/store';
 
 
 const Testimonials = () => {
-    const testimonial = useSelector(
-        (state :RootState) => state.home?.testimonials?.data
-      );
-    
+    const dispatch = useAppDispatch();
+
+
+    let TestimonialsDatafunc = async () => {
+      await  dispatch(testimonials());
+      
+      };
+      useEffect(() => {
+        TestimonialsDatafunc()
+      }, [])
+      
+  const {testimonialsData}=useAppSelector((state:RootState) => state?.home);
+  
   return (
     <section className="members_sayed">
     <div className="container">
@@ -22,11 +32,11 @@ const Testimonials = () => {
         <div className="member_slider">
             <Slider {...settings}>
 
-               {testimonial && testimonial?.map((data:any)=>
+               {testimonialsData?.map((data)=>
                 <div key={data?.ID} className="members_items">
                     <div className="members_itemsicn">
                         <div className="members_img">
-                            <Image src={testimonials} alt="testimonials" width={63} height={60} />
+                            <Image src={data?.image_url} alt="testimonials" width={63} height={60} />
                         </div>
                         <div className="members_block">
                             <h6>{data?.title}</h6>

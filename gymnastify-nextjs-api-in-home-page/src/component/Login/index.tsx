@@ -1,10 +1,44 @@
-"use server";
+"use client";
 import Loginslider from "@/component/Login/LoginSlider/Loginslider";
 import Link from "next/link";
 import eyeson from "@/assets/images/icons/eyeon_icn.svg";
 import Image from "next/image";
+import { useState } from "react";
+import { FormData } from "./LoginType";
+import { useAppDispatch } from "@/mystore/hooks";
+import { loginAction } from "@/mystore/actions/authAction";
+import { ROUTES_PATH } from "@/utils/constant";
+import { useRouter } from "next/navigation";
 
-const Login = async() => {
+const Login = () => {
+  const router =useRouter();
+  const dispatch =useAppDispatch();
+   const defaultForm={
+    username: '',
+    password: ''
+   }
+
+  const [formData, setFormData] = useState<FormData>(defaultForm);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+     try {
+      let res=await dispatch(loginAction(formData))
+      console.log(res)
+      router.push(ROUTES_PATH.HOME)
+     } catch (error) {
+      console.log(error)
+     }
+  
+  };
   return (
     <main>
       <div className="login_area">
@@ -16,7 +50,7 @@ const Login = async() => {
               <h3>Welcome Back!</h3>
             </div>
               <h4>Login</h4>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="username" className="ele_lable">Email</label>
                   <input
@@ -25,6 +59,8 @@ const Login = async() => {
                     id="username"
                     className="form-control ele_input"
                     placeholder="johnsnow@gmail.com"
+                    value={formData.username}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="mb-3">
@@ -36,6 +72,8 @@ const Login = async() => {
                       id="password"
                       className="form-control ele_input"
                       placeholder="********"
+                      value={formData.password}
+            onChange={handleInputChange}
                     />
                     <button type="button" className="btn_eyeimg">
                       <Image className="psw_hide" src={eyeson} alt="icons" />
@@ -51,7 +89,7 @@ const Login = async() => {
                   </button>
                   <p>
                     Don’t have an account ?{" "}
-                    <Link href={""}>Register</Link>
+                    <Link href={ROUTES_PATH.REGISTRATION}>Register</Link>
                   </p>
                 </div>
               </form>

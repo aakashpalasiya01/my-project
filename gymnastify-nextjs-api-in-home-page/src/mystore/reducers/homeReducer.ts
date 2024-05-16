@@ -1,39 +1,38 @@
+'use client'
+import { InitialHomeState } from "@/types/HomeType";
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
+import {GuesthomeDataType,WhatWeOfferDataType,TestimonialDataType,NeedExpertGuidanceDataType,AssignmentDataType} from '@/types/HomeType'
 
-
-const initialState={
-    guesthome:[],
+const initialState:InitialHomeState={
+    guesthome:null,
     WhatWeOffer:[],
-    testimonials:[],
-    needExpertGuidance:[],
-    assignment:[],
-    isLoading:false
+    testimonialsData:[],
+    needExpertGuidance:null,
+    assignment:null,
 }
 
 export const homeSlice =createSlice({
       name:'home',
       initialState,
       reducers:{
-         setGuest:(state,action)=>{
+         setGuest:(state,action:PayloadAction<GuesthomeDataType>)=>{
             state.guesthome=action.payload
          },
-         setWhatWeOffer:(state,action)=>{
+         setWhatWeOffer:(state,action:PayloadAction<WhatWeOfferDataType[]>)=>{
             state.WhatWeOffer=action.payload
          },
-         setTestimonials:(state,action)=>{
-            state.testimonials=action.payload
+         setTestimonials:(state,action:PayloadAction<TestimonialDataType[]>)=>{
+            state.testimonialsData=action.payload
          },
-         setneedExpertGuidance:(state,action)=>{
+         setneedExpertGuidance:(state,action:PayloadAction<NeedExpertGuidanceDataType>)=>{
             state.needExpertGuidance=action.payload
          },
-         setassignment:(state,action)=>{
+         setassignment:(state,action:PayloadAction<AssignmentDataType>)=>{
             state.assignment=action.payload
          },
-         setLoading:(state,action)=>{
-            state.assignment=action.payload
-         }
+       
       }
 
 })
-export const  {setGuest,setWhatWeOffer,setTestimonials,setneedExpertGuidance,setassignment,setLoading}=homeSlice.actions
+export const  {setGuest,setWhatWeOffer,setTestimonials,setneedExpertGuidance,setassignment}=homeSlice.actions
 export default homeSlice.reducer

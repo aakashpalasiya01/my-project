@@ -16,14 +16,12 @@ import Swal from 'sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
 
 const Header = () => {
-  // const { token, user } = useAppSelector((state: RootState) => state.auth);
-  const token='';
-  const user ='';
+  const { token, user } = useAppSelector((state: RootState) => state.auth);
+
   const pathname = usePathname()
   const dispatch = useAppDispatch()
   const router = useRouter();
-  // const userID: any = user?.user_id;
-  const userID=''
+  const userID: any = user?.user_id;
 
   const handleLogout = async () => {
     Swal.fire({

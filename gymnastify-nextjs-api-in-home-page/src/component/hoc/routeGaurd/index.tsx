@@ -10,9 +10,8 @@ import { forError } from "@/utils/CommonService";
 import Swal from "sweetalert2";
 
 export const RouterGuard = ({ children }: { children: React.ReactNode }) => {
-  // const { token, user } = useAppSelector((state: RootState) => state.auth);
-  const token='';
-  const user =''
+  const { token, user } = useAppSelector((state: RootState) => state.auth);
+  
   
   const router = useRouter();
   const pathname = usePathname();
