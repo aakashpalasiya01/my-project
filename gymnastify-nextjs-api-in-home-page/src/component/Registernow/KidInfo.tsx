@@ -6,7 +6,7 @@ import Loginslider from "../Login/LoginSlider/Loginslider";
 import Link from "next/link";
 import { ROUTES_PATH } from "@/utils/constant";
 import { useAppDispatch } from "@/mystore/hooks";
-import { groupOption } from "@/mystore/actions/registerAction";
+import { groupOption } from "@/mystore/actions/authAction";
 
 const KidInfo = ({ nextStep }: any) => {
   const [groupOptions, setGroupOPtions] = useState();

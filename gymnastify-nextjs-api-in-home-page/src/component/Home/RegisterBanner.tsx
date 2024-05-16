@@ -11,6 +11,7 @@ import { RegsiterBanner } from './Register';
 const RegisterBanner = () => {
 
     const { Loaded, ExploreCard } = useAppSelector((state: RootState) => state.registered);
+    
     const dispatch = useAppDispatch();
 
     useEffect(() => {

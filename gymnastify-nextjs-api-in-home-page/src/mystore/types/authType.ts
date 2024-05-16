@@ -75,13 +75,13 @@ export type AuthState = {
     token: string | null;
     refresh_token: string;
     user: User | undefined;
-    isLoaded: boolean;
-    ImageSlider: any;
-    whatWeOfferList: any;
-    Group: any;
-    ImageLoader:boolean;
-    productList: ProductType[];
-    subscription: SubscribeResponseType | null;
+    // isLoaded: boolean;
+    // ImageSlider: any;
+    // whatWeOfferList: any;
+    group: any;
+    // ImageLoader:boolean;
+    // productList: ProductType[];
+    // subscription: SubscribeResponseType | null;
 }
 
 

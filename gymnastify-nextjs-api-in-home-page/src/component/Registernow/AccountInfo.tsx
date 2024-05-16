@@ -2,11 +2,11 @@
 import Loginslider from "@/component/Login/LoginSlider/Loginslider";
 import Link from "next/link";
 import { ROUTES_PATH } from "@/utils/constant";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import { forError, forSuccess } from "@/utils/CommonService";
 import { useAppDispatch } from "@/mystore/hooks";
-import { registerData } from "@/mystore/actions/registerAction";
+import { registerData } from "@/mystore/actions/authAction";
 
 const AccountInfo = ({ prevStep, formData }: any) => {
   const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ const AccountInfo = ({ prevStep, formData }: any) => {
   const simpleValidator = useRef(new SimpleReactValidator({}));
   const [, forceUpdate] = useState<number>(0);
 
-  const handleChange = (e) => {
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setAccountData({
       ...accountData,
@@ -65,6 +65,7 @@ const AccountInfo = ({ prevStep, formData }: any) => {
         let res = await dispatch(registerData(finalData));
         console.log(res);
         forSuccess(res?.data?.message);
+        setAccountData(defaultForm)
       } catch (error) {
         console.log(error);
         forError("User Registered failed");

@@ -11,7 +11,7 @@ import { ROUTES_PATH } from "@/utils/constant";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { RootState } from "@/store/store";
 import { usePathname, useRouter } from "next/navigation";
-import { logoutAction } from "@/store/actions/authAction";
+import { logoutAction } from "@/mystore/actions/authAction";
 import Swal from 'sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
 
