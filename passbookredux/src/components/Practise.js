@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 import moment from "moment";
 import { toast } from "react-toastify";
@@ -19,61 +19,96 @@ import { addItem } from "./redux/action/passBookActions";
 
 const Practise = () => {
   const dispatch = useDispatch();
- const defaultForm={
-  transactionamount:'',
-  transactiontype:'credit',
-  remark:"",
-  remainingAmount:0
- }
- const [form,setForm]=useState(defaultForm)
   const passbook = useSelector((state) => state.list);
-   const [remainingAmount,setRemainingAmount]=useState(0)
-  
+  const [form, setForm] = useState({
+    transactionamount: '',
+    transactiontype: 'credit',
+    remark: "",
+    remainingAmount: 0
+  });
+  const [remainingAmount, setRemainingAmount] = useState(0);
 
-
-
-  const handlehange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({...form, [name]: value });
+    setForm({ ...form, [name]: value });
   };
-  const cleartextfiled = () => {
-    setForm(defaultForm)
-    toast.info("Reset all details successfuly");
-  };
-  const handleformdata = (e) => {
-    e.preventDefault();
-    // const { form, remainingAmount } = passbook;
-    if (form?.transactionamount === 0 || form?.remark === "") {
-      toast.info("Please Fill All Details");
 
+  const clearTextField = () => {
+    setForm({
+      transactionamount: '',
+      transactiontype: 'credit',
+      remark: "",
+      remainingAmount: 0
+    });
+    toast.info("Reset all details successfully");
+  };
+
+  const calculateAverage = () => {
+    const sum = passbook.reduce((total, entry) => {
+      if (entry.transactiontype === 'credit') {
+        return total + parseInt(entry.transactionamount);
+      }
+      return total;
+    }, 0);
+    return sum / passbook.length;
+  };
+
+  const addInterestEntry = () => {
+    const average = calculateAverage() * 0.025;
+    const currentDate = moment().format("MMM Do YY");
+    const interestEntry = {
+      transactionamount: average.toFixed(2),
+      transactiontype: 'Interest',
+      remark: 'Interest',
+      remainingAmount,
+      date: currentDate
+    };
+    dispatch(addItem(interestEntry));
+    toast.success(`Interest entry added successfully`);
+  };
+
+  useEffect(() => {
+    if (passbook.length > 0 && passbook.length % 4 === 0) {
+      
+    
+        addInterestEntry();
+    }
+  }, [passbook]);
+
+  const handleFormData = (e) => {
+    e.preventDefault();
+    if (!form?.transactionamount || !form?.remark) {
+      toast.info("Please Fill All Details");
       return;
     }
-    const currentDate = moment().format("MMM Do YY");
-     
-    const newRemainingAmount =
-   
-      form?.transactiontype === "credit"
-        ? parseInt([passbook?.length-1].remainingAmount) + parseInt(form?.transactionamount) 
-        : parseInt([passbook?.length-1].remainingAmount)- parseInt(form?.transactionamount);
 
-      
+    const currentDate = moment().format("MMM Do YY");
+    const lastPassbookEntry = passbook[passbook.length - 1] || { remainingAmount: 0 };
+    const currentRemainingAmount = lastPassbookEntry.remainingAmount;
+    const newRemainingAmount =
+      form.transactiontype === "credit"
+        ? currentRemainingAmount + parseInt(form.transactionamount)
+        : currentRemainingAmount - parseInt(form.transactionamount);
 
     if (newRemainingAmount < 0) {
-      toast.warning("insufficient amount");
-
+      toast.warning("Insufficient amount");
       return;
     }
 
+    setRemainingAmount(newRemainingAmount);
     const updatedForm = {
       ...form,
       date: currentDate,
       remainingAmount: newRemainingAmount,
     };
-     
     dispatch(addItem(updatedForm));
-    toast.success(`Amount ${updatedForm.transactiontype} successfuly`);
-    
-   
+    toast.success(`Amount ${updatedForm.transactiontype} successfully`);
+    setForm({
+      transactionamount: '',
+      transactiontype: 'credit',
+      remark: "",
+      remainingAmount: newRemainingAmount
+    });
   };
   return (
     <>
@@ -92,7 +127,7 @@ const Practise = () => {
         boxShadow={4}
         sx={{ border: "1px solid grey", borderRadius: "4" }}
       >
-        <form onSubmit={handleformdata}>
+        <form onSubmit={handleFormData}>
           <Container maxWidth={"sm"}>
             <Typography variant="h4" align="center" gutterBottom>
               Transaction
@@ -105,7 +140,7 @@ const Practise = () => {
               name="transactionamount"
               placeholder="Enter any amount"
               value={form.transactionamount}
-              onChange={handlehange}
+              onChange={handleChange}
             />
             <FormControl>
               <Typography variant="h5">Transaction Type</Typography>
@@ -113,7 +148,7 @@ const Practise = () => {
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="transactiontype"
                 value={form.transactiontype}
-                onChange={handlehange}
+                onChange={handleChange}
                 row
               >
                 <FormControlLabel
@@ -137,13 +172,13 @@ const Practise = () => {
               maxRows={5}
               name="remark"
               value={form?.remark}
-              onChange={handlehange}
+              onChange={handleChange}
             />
             <Box display="flex" justifyContent="space-between" mt={2}>
               <Button variant="contained" type="submit">
                 Save
               </Button>
-              <Button variant="outlined" onClick={cleartextfiled}>
+              <Button variant="outlined" onClick={clearTextField}>
                 Reset
               </Button>
             </Box>

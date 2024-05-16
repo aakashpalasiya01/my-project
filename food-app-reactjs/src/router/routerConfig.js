@@ -24,5 +24,33 @@ export const privateRoutes = [
     exact: true,
     layout: PrivateLayout
   },
-
+  {
+    key: 'users',
+    path: ROUTES.ALL_USERS_PATH,
+    component: Users,
+    exact: true,
+    layout: PrivateLayout
+  },
+  {
+    key: 'Food',
+    path: ROUTES.ADD_USER_PATH,
+    component: AddUser,
+    exact: true,
+    layout: PrivateLayout
+  },
+  {
+    key: 'Food',
+    path: ROUTES.EDIT_USER_PATH,
+    component: EditUser,
+    exact: true,
+    layout: PrivateLayout
+  },
+ {
+    key: 'Food',
+    path: ROUTES.VIEW_ALL_PATH,
+    component: ViewUser,
+    exact: true,
+    layout: PrivateLayout
+  },
 ]
+
