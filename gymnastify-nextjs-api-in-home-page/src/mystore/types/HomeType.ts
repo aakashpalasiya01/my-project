@@ -35,6 +35,7 @@ export type HomeState = {
     SkillsPerson: any;
     Taxonomy:any;
     TaxonomySkill: any;
+
 }
 
 export interface GuesthomeDataType {
@@ -162,4 +163,5 @@ export type InitialHomeState = {
 testimonialsData:TestimonialDataType[],
 needExpertGuidance:NeedExpertGuidanceDataType | null,
 assignment:AssignmentDataType | null,
+
   }

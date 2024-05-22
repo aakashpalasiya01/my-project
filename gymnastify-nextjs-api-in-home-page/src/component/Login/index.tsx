@@ -32,6 +32,7 @@ const Login = () => {
     event.preventDefault();
      try {
       let res=await dispatch(loginAction(formData))
+      console.log(formData)
       console.log(res)
       router.push(ROUTES_PATH.HOME)
      } catch (error) {

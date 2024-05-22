@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import KidInfo from "./KidInfo";
 import AccountInfo from "./AccountInfo";
 import GuardiansInfo from "./GuardiansInfo";

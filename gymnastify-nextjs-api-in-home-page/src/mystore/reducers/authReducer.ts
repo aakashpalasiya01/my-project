@@ -31,15 +31,15 @@ export const authSlice = createSlice({
       state.user = action.payload.data;
       state.refresh_token = action.payload.refresh_token;
     },
-    logout: (state :RootState) => {
-      Cookies.remove("token");
-      Cookies.remove("refresh_token");
-      Cookies.remove("user");
-      localStorage.clear();
-      state.token = "";
-      state.refresh_token = "";
-      state.user = undefined;
-    },
+    // logout: (state :RootState) => {
+    //   Cookies.remove("token");
+    //   Cookies.remove("refresh_token");
+    //   Cookies.remove("user");
+    //   localStorage.clear();
+    //   state.token = "";
+    //   state.refresh_token = "";
+    //   state.user = undefined;
+    // },
     refreshToken: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
     },
@@ -52,7 +52,7 @@ export const authSlice = createSlice({
     },
 },
 });
-export const { login,logout,setRegisterGroup,setregisteredData } =
+export const { login,setRegisterGroup,setregisteredData } =
   authSlice.actions;
 
 export default authSlice.reducer;
