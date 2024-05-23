@@ -7,68 +7,42 @@ import SimpleReactValidator from "simple-react-validator";
 import { forError, forSuccess } from "@/utils/CommonService";
 import { useAppDispatch } from "@/mystore/hooks";
 import { registerData } from "@/mystore/actions/authAction";
+import { AccountInfoProps } from "./Registertype";
 
-const AccountInfo = ({ prevStep, formData }: any) => {
+const AccountInfo: React.FC<AccountInfoProps> = ({ handleChange, form }) => {
   const dispatch = useAppDispatch();
-  console.log(formData);
-  const defaultForm = {
-    email: "",
-    password: "",
-    confirm_password: "",
-  };
-  const [accountData, setAccountData] = useState(defaultForm);
+
   const simpleValidator = useRef(new SimpleReactValidator({}));
   const [, forceUpdate] = useState<number>(0);
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setAccountData({
-      ...accountData,
-      [name]: value,
-    });
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    handleChange({ [name]: value });
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (simpleValidator.current.allValid()) {
-      const finalData = new FormData();
-
       try {
-        formData?.guardiansInfo?.guardians_info?.forEach((guardian, index) => {
-          finalData.append(
-            `guardians_info[${index}][first_name]`,
-            guardian.first_name
-          );
-          finalData.append(
-            `guardians_info[${index}][last_name]`,
-            guardian.last_name
-          );
-          finalData.append(
-            `guardians_info[${index}][relation_with_kids]`,
-            guardian.relation_with_kids
-          );
-          finalData.append(`guardians_info[${index}][mobile]`, guardian.mobile);
-          finalData.append(
-            `guardians_info[${index}][is_default]`,
-            guardian.is_default
-          );
-        });
+        const finalData = new FormData();
 
-        Object?.entries(formData?.kidInfo)?.forEach(([key, value]) => {
-          finalData?.append(key, value);
-        });
+        // Assuming form is an object with the necessary fields
+        for (const key in form) {
+          if (form.hasOwnProperty(key)) {
+            finalData.append(key, form[key]);
+          }
+        }
 
-        Object?.entries(accountData)?.forEach(([key, value]) => {
-          finalData?.append(key, value);
-        });
-
-        let res = await dispatch(registerData(finalData));
+        // Assuming you have a function dispatch and an action creator registerData
+        const res = await dispatch(registerData(finalData));
         console.log(res);
         forSuccess(res?.data?.message);
-        setAccountData(defaultForm)
+
+        // Reset the form state if needed
+        // setForm(defaultForm);
       } catch (error) {
-        console.log(error);
-        forError("User Registered failed");
+        console.error(error);
+        forError("User Registration failed");
       }
     } else {
       simpleValidator.current.showMessages();
@@ -99,13 +73,14 @@ const AccountInfo = ({ prevStep, formData }: any) => {
                   id="email"
                   className="form-control ele_input"
                   placeholder="rabecavasin@gmail.com"
-                  onChange={handleChange}
+                  value={form.email}
+                  onChange={handleInputChange}
                   onBlur={() => simpleValidator.current.showMessageFor("email")}
                 />
                 {simpleValidator.current.message(
                   "email",
-                  accountData.email,
-                  "required"
+                  form.email,
+                  "required|email"
                 )}
               </div>
               <div className="row kids_row">
@@ -114,19 +89,20 @@ const AccountInfo = ({ prevStep, formData }: any) => {
                     <label className="ele_lable">Password</label>
                     <div className="psw_btn position-relative">
                       <input
-                        type="text"
+                        type="password"
                         name="password"
                         id="password"
                         className="form-control ele_input"
                         placeholder="*******"
-                        onChange={handleChange}
+                        value={form.password}
+                        onChange={handleInputChange}
                         onBlur={() =>
                           simpleValidator.current.showMessageFor("password")
                         }
                       />
                       {simpleValidator.current.message(
                         "password",
-                        accountData.password,
+                        form.password,
                         "required|min:6"
                       )}
                     </div>
@@ -139,12 +115,13 @@ const AccountInfo = ({ prevStep, formData }: any) => {
                     </label>
                     <div className="psw_btn position-relative">
                       <input
-                        type="text"
+                        type="password"
                         name="confirm_password"
                         id="confirm_password"
                         className="form-control ele_input"
                         placeholder="*******"
-                        onChange={handleChange}
+                        value={form.confirm_password}
+                        onChange={handleInputChange}
                         onBlur={() =>
                           simpleValidator.current.showMessageFor(
                             "confirm_password"
@@ -154,8 +131,8 @@ const AccountInfo = ({ prevStep, formData }: any) => {
 
                       {simpleValidator.current.message(
                         "confirm_password",
-                        accountData.confirm_password,
-                        `required|in:${accountData.password}`,
+                        form?.confirm_password,
+                        `required|in:${form.password}`,
                         { messages: { in: "Passwords need to match!" } }
                       )}
                     </div>

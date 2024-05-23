@@ -7,28 +7,22 @@ import Link from "next/link";
 import { ROUTES_PATH } from "@/utils/constant";
 import { useAppDispatch } from "@/mystore/hooks";
 import { groupOption } from "@/mystore/actions/authAction";
+import { GroupOption, KidInfoProps } from "./Registertype";
 
-const KidInfo = ({ nextStep }: any) => {
-  const [groupOptions, setGroupOPtions] = useState();
+const KidInfo: React.FC<KidInfoProps> = ({ nextStep, handleChange, form }) => {
+  const [groupOptions, setGroupOptions] = useState<GroupOption[]>([]);
   const dispatch = useAppDispatch();
+
 
   let GroupOptionsData = async () => {
     let res = await dispatch(groupOption());
-    setGroupOPtions(res);
+    setGroupOptions(res);
   };
 
   useEffect(() => {
     GroupOptionsData();
   }, []);
-  const defaultForm = {
-    first_name: "",
-    last_name: "",
-    age: "",
-    group: "",
-    levels: "",
-    branch: "",
-  };
-  const [kidData, setKidData] = useState(defaultForm);
+
 
   const simpleValidator = useRef<SimpleReactValidator>(
     new SimpleReactValidator()
@@ -36,18 +30,17 @@ const KidInfo = ({ nextStep }: any) => {
 
   const [, forceUpdate] = useState<number>(0);
 
-  const handleChange =(event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+ 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
-    setKidData({ ...kidData, [name]: value });
+    handleChange({ [name]: value });
   };
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (simpleValidator.current.allValid()) {
-      const kidFormData = {
-        kidInfo: kidData,
-      };
-      nextStep(kidFormData);
+      nextStep();
     } else {
       simpleValidator.current.showMessages();
       forceUpdate(1);
@@ -79,15 +72,15 @@ const KidInfo = ({ nextStep }: any) => {
                       name="first_name"
                       id="first_name"
                       placeholder="First Name"
-                      value={kidData.first_name}
-                      onChange={handleChange}
+                      value={form?.first_name}
+                      onChange={handleInputChange}
                       onBlur={() =>
                         simpleValidator?.current.showMessageFor("first_name")
                       }
                     />
-                    {simpleValidator?.current?.message(
+                     {simpleValidator?.current?.message(
                       "first_name",
-                      kidData?.first_name,
+                      form?.first_name,
                       "required"
                     )}
                   </div>
@@ -103,15 +96,15 @@ const KidInfo = ({ nextStep }: any) => {
                       id="last_name"
                       className="form-control ele_input"
                       placeholder="Last Name"
-                      value={kidData?.last_name}
-                      onChange={handleChange}
+                      value={form?.last_name}
+                      onChange={handleInputChange}
                       onBlur={() =>
                         simpleValidator?.current?.showMessageFor("last_name")
                       }
                     />
-                    {simpleValidator?.current.message(
+                  {simpleValidator?.current.message(
                       "last_name",
-                      kidData?.last_name,
+                      form?.last_name,
                       "required"
                     )}
                   </div>
@@ -127,15 +120,15 @@ const KidInfo = ({ nextStep }: any) => {
                   id="age"
                   className="form-control ele_input"
                   placeholder="Age"
-                  value={kidData?.age}
-                  onChange={handleChange}
+                  value={form?.age}
+                  onChange={handleInputChange}
                   onBlur={() => simpleValidator?.current?.showMessageFor("age")}
-                />
-                {simpleValidator?.current?.message(
-                  "age",
-                  kidData?.age,
-                  "required"
-                )}
+                  />
+                  {simpleValidator?.current?.message(
+                    "age",
+                    form?.age,
+                    "required"
+                  )}
               </div>
               <div className="mb-3">
                 <label htmlFor="group" className="ele_lable">
@@ -145,21 +138,21 @@ const KidInfo = ({ nextStep }: any) => {
                   className="ele_input form-control ele_select"
                   name="group"
                   id="group"
-                  value={kidData?.group}
-                  onChange={handleChange}
+                  value={form?.group}
+                  onChange={handleInputChange}
                   onBlur={() => simpleValidator?.current?.showMessageFor("group")}
-                >
-                  {groupOptions?.map((dataOption: any) => (
-                    <option key={dataOption?.id} value={dataOption?.id}>
-                      {dataOption?.name}
-                    </option>
-                  ))}
-                </select>
-                  {simpleValidator?.current?.message(
-                    "group",
-                    kidData?.group,
-                    "required"
-                  )}
+                  >
+                    {groupOptions?.map((dataOption: any) => (
+                      <option key={dataOption?.id} value={dataOption?.id}>
+                        {dataOption?.name}
+                      </option>
+                    ))}
+                  </select>
+                    {simpleValidator?.current?.message(
+                      "group",
+                      form?.group,
+                      "required"
+                    )}
               </div>
               <div className="mb-3">
                 <label htmlFor="levels" className="ele_lable">
@@ -169,13 +162,13 @@ const KidInfo = ({ nextStep }: any) => {
                   className="ele_input form-control ele_select"
                   name="levels"
                   id="levels"
-                  value={kidData?.levels}
-                  onChange={handleChange}
+                  value={form?.levels}
+                  onChange={handleInputChange}
                   onBlur={() =>
                     simpleValidator?.current?.showMessageFor("levels")
                   }
                 >
-                  {groupOptions?.find((groupOption) => groupOption?.id ===parseInt(kidData?.group))
+                  {groupOptions?.find((groupOption) => groupOption?.id ===parseInt(form?.group))
                    
                     ?.skills?.map((skill) => (
                       <option key={skill?.id} value={skill?.slug}>
@@ -185,7 +178,7 @@ const KidInfo = ({ nextStep }: any) => {
                 </select>
                   {simpleValidator?.current?.message(
                     "levels",
-                    kidData?.levels,
+                    form?.levels,
                     "required"
                   )}
               </div>
@@ -197,8 +190,8 @@ const KidInfo = ({ nextStep }: any) => {
                   className="ele_input form-control ele_select"
                   name="branch"
                   id="branch"
-                  value={kidData?.branch}
-                  onChange={handleChange}
+                  value={form?.branch}
+                  onChange={handleInputChange}
                   onBlur={() =>
                     simpleValidator?.current?.showMessageFor("branch")
                   }
@@ -210,7 +203,7 @@ const KidInfo = ({ nextStep }: any) => {
                 </select>
                 {simpleValidator.current.message(
                     "branch",
-                    kidData?.branch,
+                    form?.branch,
                     "required"
                   )}
               </div>

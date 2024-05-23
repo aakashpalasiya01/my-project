@@ -4,54 +4,30 @@ import Link from "next/link";
 import React, { useRef, useState } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import InputMask from "react-input-mask";
+import { GuardiansInfoProps } from "./Registertype";
 
-const GuardiansInfo = ({ nextStep }: any) => {
-  const defaultForm = {
-    guardians_info: [
-      {
-        first_name: "",
-        last_name: "",
-        relation_with_kids: "",
-        mobile: "",
-        is_default: "1",
-      },
-    ],
-  };
-
-  const [guardianData, setGuardianData] = useState(defaultForm);
-
+const GuardiansInfo: React.FC<GuardiansInfoProps> = ({ nextStep, handleChange, form }) => {
   const simpleValidator = useRef<SimpleReactValidator>(
     new SimpleReactValidator()
   );
   const [, forceUpdate] = useState<number>(0);
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setGuardianData({
-      ...guardianData,
-      guardians_info: [
-        {
-          ...guardianData?.guardians_info[0],
-          [name]: value,
-        },
-      ],
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    handleChange({
+      guardians_info: form.guardians_info.map((guardian, index) =>
+        index === 0 ? { ...guardian, [name]: value } : guardian
+      ),
     });
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const guardianFormData = {
-      guardiansInfo: guardianData,
-    };
-    nextStep(guardianFormData);
-    // if (simpleValidator.current.allValid()) {
-
-    // } else {
-    //   simpleValidator.current.showMessages();
-    //   forceUpdate(1);
-    // }
+    if (simpleValidator.current.allValid()) {
+      nextStep();
+    } else {
+      simpleValidator.current.showMessages();
+      forceUpdate(1);
+    }
   };
 
   return (
@@ -78,8 +54,8 @@ const GuardiansInfo = ({ nextStep }: any) => {
                       className="form-control ele_input"
                       placeholder="First Name"
                       name="first_name"
-                      value={guardianData?.guardians_info[0]?.first_name}
-                      onChange={handleChange}
+                      value={form.guardians_info[0].first_name}
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -91,8 +67,8 @@ const GuardiansInfo = ({ nextStep }: any) => {
                       className="form-control ele_input"
                       placeholder="Last Name"
                       name="last_name"
-                      value={guardianData?.guardians_info[0].last_name}
-                      onChange={handleChange}
+                      value={form.guardians_info[0].last_name}
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -101,8 +77,8 @@ const GuardiansInfo = ({ nextStep }: any) => {
                 <label className="ele_lable">Relation with Kid</label>
                 <select
                   name="relation_with_kids"
-                  value={guardianData?.guardians_info[0]?.relation_with_kids}
-                  onChange={handleChange}
+                  value={form.guardians_info[0].relation_with_kids}
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {handleInputChange}}
                   className="ele_input form-control ele_select"
                 >
                   <option value="">Please select</option>
@@ -121,8 +97,8 @@ const GuardiansInfo = ({ nextStep }: any) => {
                   name="mobile"
                   className="form-control ele_input"
                   placeholder="(000) 000-0000"
-                  value={guardianData?.guardians_info[0]?.mobile}
-                  onChange={handleChange}
+                  value={form.guardians_info[0].mobile}
+                  onChange={handleInputChange}
                 />
               </div>
               <div className="btn_login">

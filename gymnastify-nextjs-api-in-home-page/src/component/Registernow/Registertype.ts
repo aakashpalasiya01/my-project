@@ -30,6 +30,14 @@ export interface GroupDataType {
     };
   }
   
+  export interface GuardianInfo {
+    first_name: string;
+    last_name: string;
+    relation_with_kids: string;
+    mobile: string;
+    is_default: number;
+  }
+  
   export interface RegisterDataType {
     first_name: string;
     last_name: string;
@@ -37,20 +45,48 @@ export interface GroupDataType {
     group: number;
     levels: string;
     branch: string;
-    guardians_info: {
-      first_name: string;
-      last_name: string;
-      relation_with_kids: string;
-      mobile: string;
-      is_default: number;
-    }[];
+    guardians_info: GuardianInfo[];
     email: string;
     password: string;
     confirm_password: string;
   }
   
+  
   export type InitialRegistrationState = {
     group: GroupDataType[];
     register: RegisterDataType | null;
   };
+  export interface FormData {
+    email?: string;
+    password?: string;
+    confirm_password?: string;
+    // Add other fields as necessary
+  }
   
+  export interface AccountInfoProps {
+    handleChange: (newData: Partial<RegisterDataType>) => void;
+    form: RegisterDataType;
+  }
+  
+  export interface GuardiansInfoProps {
+    nextStep: () => void;
+    handleChange: (newData: Partial<RegisterDataType>) => void;
+    form: RegisterDataType;
+  }
+  
+  export interface KidInfoProps {
+    nextStep: () => void;
+    handleChange: (newData: Partial<FormData>) => void;
+    form: RegisterDataType;
+  }
+  export interface Skill {
+    id: number;
+    name: string;
+    slug: string;
+  }
+  
+  export interface GroupOption {
+    id: number;
+    name: string;
+    skills: Skill[];
+  }
