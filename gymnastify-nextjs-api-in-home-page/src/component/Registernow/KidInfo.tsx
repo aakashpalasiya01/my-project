@@ -168,7 +168,7 @@ const KidInfo: React.FC<KidInfoProps> = ({ nextStep, handleChange, form }) => {
                     simpleValidator?.current?.showMessageFor("levels")
                   }
                 >
-                  {groupOptions?.find((groupOption) => groupOption?.id ===parseInt(form?.group))
+                  {groupOptions?.find((groupOption) => groupOption?.id ===Number(form?.group))
                    
                     ?.skills?.map((skill) => (
                       <option key={skill?.id} value={skill?.slug}>

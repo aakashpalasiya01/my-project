@@ -42,13 +42,14 @@ export interface GroupDataType {
     first_name: string;
     last_name: string;
     age: number;
-    group: number;
+    group: number |string;
     levels: string;
     branch: string;
     guardians_info: GuardianInfo[];
     email: string;
     password: string;
     confirm_password: string;
+    
   }
   
   
