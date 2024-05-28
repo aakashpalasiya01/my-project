@@ -7,10 +7,15 @@ import SimpleReactValidator from "simple-react-validator";
 import { forError, forSuccess } from "@/utils/CommonService";
 import { useAppDispatch } from "@/mystore/hooks";
 import { registerData } from "@/mystore/actions/authAction";
-import { AccountInfoProps } from "./Registertype";
+import { AccountInfoProps, RegisterDataType } from "./Registertype";
+import { useRouter } from "next/navigation";
+import { ThreeDots } from "react-loader-spinner";
 
 const AccountInfo: React.FC<AccountInfoProps> = ({ handleChange, form }) => {
+  const [loading, setloading] = useState(false);
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
 
   const simpleValidator = useRef(new SimpleReactValidator({}));
   const [, forceUpdate] = useState<number>(0);
@@ -22,27 +27,25 @@ const AccountInfo: React.FC<AccountInfoProps> = ({ handleChange, form }) => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setloading(true);
     if (simpleValidator.current.allValid()) {
       try {
         const finalData = new FormData();
 
-        // Assuming form is an object with the necessary fields
         for (const key in form) {
           if (form.hasOwnProperty(key)) {
-            finalData.append(key, form[key]);
+            const value = form[key as keyof RegisterDataType];
+            finalData.append(key, value.toString());
           }
         }
 
-        // Assuming you have a function dispatch and an action creator registerData
         const res = await dispatch(registerData(finalData));
-        console.log(res);
-        forSuccess(res?.data?.message);
-
-        // Reset the form state if needed
-        // setForm(defaultForm);
+        router.push(ROUTES_PATH. THANKYOU)
       } catch (error) {
         console.error(error);
         forError("User Registration failed");
+      } finally{
+        setloading(false);
       }
     } else {
       simpleValidator.current.showMessages();
@@ -145,7 +148,20 @@ const AccountInfo: React.FC<AccountInfoProps> = ({ handleChange, form }) => {
                   type="submit"
                   className="btn_block primary_btn width_full"
                 >
-                  Register
+                  {loading ? (
+                      <ThreeDots
+                      height="20"
+                      width="80"
+                      radius="9"
+                      color="#fff"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{ display: "block" }}
+                      visible={true}
+                      />
+                    ) : (
+                      "Register"
+                    )}
+                  
                 </button>
                 <p>
                   Already have an account{" "}

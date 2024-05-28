@@ -28,7 +28,7 @@ import Cookies from "js-cookie";
 export const loginAction = (LoginData: any) => async (dispatch: AppDispatch) => {
     const response = await API.post("/wp-json/jwt-auth/v1/token", LoginData);
     dispatch(AuthReducers.login(response.data))
-
+  
     return response.data;
   };
 
@@ -43,7 +43,7 @@ export const loginAction = (LoginData: any) => async (dispatch: AppDispatch) => 
     const response = await API.get("/wp-json/wp/v2/group");
 
    let res= dispatch(AuthReducers.setRegisterGroup(response.data));
-    console.log(res)
+  
     return response.data;
   };
 

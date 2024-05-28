@@ -9,14 +9,16 @@ import { useAppDispatch } from "@/mystore/hooks";
 import { loginAction } from "@/mystore/actions/authAction";
 import { ROUTES_PATH } from "@/utils/constant";
 import { useRouter } from "next/navigation";
+import { ThreeDots } from "react-loader-spinner";
 
 const Login = () => {
-  const router =useRouter();
-  const dispatch =useAppDispatch();
-   const defaultForm={
-    username: '',
-    password: ''
-   }
+  const [loading, setloading] = useState(false);
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const defaultForm = {
+    username: "",
+    password: "",
+  };
 
   const [formData, setFormData] = useState<FormData>(defaultForm);
 
@@ -24,21 +26,22 @@ const Login = () => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-     try {
-      let res=await dispatch(loginAction(formData))
-      console.log(formData)
-      console.log(res)
+    setloading(true);
+    try {
+      let res = await dispatch(loginAction(formData));
+    
       router.push(ROUTES_PATH.HOME)
-     } catch (error) {
-      console.log(error)
-     }
-  
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setloading(false);
+    }
   };
   return (
     <main>
@@ -46,14 +49,16 @@ const Login = () => {
         <section className="login_block">
           <div className="login_group position-relative">
             <div className="login_frm">
-            <div className="logo_title">
-              <Link href="">Gymnastify</Link>
-              <h3>Welcome Back!</h3>
-            </div>
+              <div className="logo_title">
+                <Link href="">Gymnastify</Link>
+                <h3>Welcome Back!</h3>
+              </div>
               <h4>Login</h4>
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label htmlFor="username" className="ele_lable">Email</label>
+                  <label htmlFor="username" className="ele_lable">
+                    Email
+                  </label>
                   <input
                     type="email"
                     name="username"
@@ -65,7 +70,9 @@ const Login = () => {
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="password" className="ele_lable">Password</label>
+                  <label htmlFor="password" className="ele_lable">
+                    Password
+                  </label>
                   <div className="psw_btn position-relative">
                     <input
                       type={"password"}
@@ -74,7 +81,7 @@ const Login = () => {
                       className="form-control ele_input"
                       placeholder="********"
                       value={formData.password}
-            onChange={handleInputChange}
+                      onChange={handleInputChange}
                     />
                     <button type="button" className="btn_eyeimg">
                       <Image className="psw_hide" src={eyeson} alt="icons" />
@@ -85,8 +92,23 @@ const Login = () => {
                   <Link href={""}>Forgot password?</Link>
                 </div>
                 <div className="btn_login">
-                  <button type="submit" className="btn_block primary_btn width_full">
-                      Login
+                  <button
+                    type="submit"
+                    className="btn_block primary_btn width_full"
+                  >
+                    {loading ? (
+                      <ThreeDots
+                      height="20"
+                      width="80"
+                      radius="9"
+                      color="#fff"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{ display: "block" }}
+                      visible={true}
+                      />
+                    ) : (
+                      "Login"
+                    )}
                   </button>
                   <p>
                     Don’t have an account ?{" "}
@@ -102,7 +124,7 @@ const Login = () => {
               </p>
             </div>
           </div>
-          <Loginslider/>
+          <Loginslider />
         </section>
       </div>
     </main>

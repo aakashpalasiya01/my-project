@@ -42,7 +42,7 @@ export interface GroupDataType {
     first_name: string;
     last_name: string;
     age: number;
-    group: number |string;
+    group: number | string;
     levels: string;
     branch: string;
     guardians_info: GuardianInfo[];

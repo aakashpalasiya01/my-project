@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
-import { AuthState, LoginRes} from "@/mystore/types/authType";
+import { AuthState, LoginRes } from "@/mystore/types/authType";
 import { RootState } from "../store";
 
 let token = null;
@@ -16,7 +16,8 @@ const initialState: AuthState = {
   token: token ? token : "",
   refresh_token: refresh_token ?? "",
   user: user ? JSON.parse(user) : "",
-  group:[]
+  group: [],
+  subscription: subscription ? subscription : null
 };
 
 export const authSlice = createSlice({
@@ -26,7 +27,7 @@ export const authSlice = createSlice({
     login: (state, action: PayloadAction<LoginRes>) => {
       Cookies.set("token", action.payload.token);
       Cookies.set("refresh_token", "asd");
-      Cookies.set("user", JSON.stringify(action.payload.data));
+      state.subscription=action.payload.data.subscription;
       state.token = action.payload.token;
       state.user = action.payload.data;
       state.refresh_token = action.payload.refresh_token;
@@ -50,9 +51,8 @@ export const authSlice = createSlice({
     setRegisterGroup: (state, action: PayloadAction<any>) => {
       state.group = action.payload;
     },
-},
+  },
 });
-export const { login,setRegisterGroup,setregisteredData } =
-  authSlice.actions;
+export const { login, setRegisterGroup, setregisteredData } = authSlice.actions;
 
 export default authSlice.reducer;

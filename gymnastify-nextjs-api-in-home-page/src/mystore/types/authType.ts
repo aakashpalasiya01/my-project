@@ -75,6 +75,7 @@ export type AuthState = {
     token: string | null;
     refresh_token: string;
     user: User | undefined;
+
     // isLoaded: boolean;
     // ImageSlider: any;
     // whatWeOfferList: any;
@@ -82,6 +83,8 @@ export type AuthState = {
     // ImageLoader:boolean;
     // productList: ProductType[];
     // subscription: SubscribeResponseType | null;
+    subscription: String | null;
+
 }
 
 
