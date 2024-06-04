@@ -7,7 +7,8 @@ export const PUBLIC_PATH = {
   RESETPASSWORD:"/ResetPassword",
   EXPLORE: '/explore',
   EXPLORESKILL: "/explore-skill",
-  THANKYOU: "/thankyou"
+  THANKYOU: "/thankyou",
+  // HOME: "/home",
 };
 
 export const PRIVATE_PATH = {

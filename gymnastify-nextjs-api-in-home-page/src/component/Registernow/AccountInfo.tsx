@@ -40,7 +40,7 @@ const AccountInfo: React.FC<AccountInfoProps> = ({ handleChange, form }) => {
         }
 
         const res = await dispatch(registerData(finalData));
-        router.push(ROUTES_PATH. THANKYOU)
+        router.push(ROUTES_PATH.THANKYOU)
       } catch (error) {
         console.error(error);
         forError("User Registration failed");
