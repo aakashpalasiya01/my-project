@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+  <g id="notification" transform="translate(104.043 0)">
+    <g id="Group_30995" data-name="Group 30995" transform="translate(-103.042 0)">
+      <rect id="Rectangle_22154" data-name="Rectangle 22154" width="22" height="22" transform="translate(-1)" fill="none"/>
+      <g id="question" transform="translate(0 1)">
+        <g id="Group_162457" data-name="Group 162457">
+          <g id="Group_162456" data-name="Group 162456">
+            <path id="Path_1044166" data-name="Path 1044166" d="M10,0A10,10,0,1,0,20,10,9.994,9.994,0,0,0,10,0Zm0,18.6A8.6,8.6,0,1,1,18.6,10,8.614,8.614,0,0,1,10,18.6Z"/>
+          </g>
+        </g>
+        <g id="Group_162459" data-name="Group 162459" transform="translate(8.673 12.609)">
+          <g id="Group_162458" data-name="Group 162458">
+            <path id="Path_1044167" data-name="Path 1044167" d="M223.846,323.924a1.045,1.045,0,0,0,0,2.09,1.045,1.045,0,0,0,0-2.09Z" transform="translate(-222.815 -323.924)"/>
+          </g>
+        </g>
+        <g id="Group_162461" data-name="Group 162461" transform="translate(7.199 4.9)">
+          <g id="Group_162460" data-name="Group 162460">
+            <path id="Path_1044168" data-name="Path 1044168" d="M189.095,127.469c-1.832,0-2.674,1.086-2.674,1.819a.778.778,0,0,0,.814.774c.733,0,.434-1.045,1.819-1.045.679,0,1.221.3,1.221.923,0,.733-.76,1.154-1.208,1.533a2.484,2.484,0,0,0-.909,2.063c0,.706.19.909.746.909.665,0,.8-.3.8-.556a1.7,1.7,0,0,1,.76-1.7,3.474,3.474,0,0,0,1.52-2.484C191.985,128.433,190.832,127.469,189.095,127.469Z" transform="translate(-186.421 -127.469)"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
