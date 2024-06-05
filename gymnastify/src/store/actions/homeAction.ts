@@ -99,7 +99,7 @@ export const FQA = async () => {
 export const guestHomePageReview = () => async (dispatch: AppDispatch) => {
   const response = await API.get("/wp-json/wp/v2/users_testimonial");
   dispatch(homeReducer.setTestimonials(response.data.data));
-  return response.data;
+  return response.data.data;
 };
 
 

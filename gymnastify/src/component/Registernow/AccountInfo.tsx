@@ -41,7 +41,7 @@ const AccountInfo: React.FC<AccountInfoProps> = ({ handleChange, form }) => {
           }
         }
       console.log(form)
-      debugger
+      
         const res = await dispatch(registerData(finalData));
         router.push(ROUTES_PATH.THANKYOU)
       } catch (error) {

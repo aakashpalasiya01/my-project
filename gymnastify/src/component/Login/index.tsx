@@ -3,18 +3,24 @@ import Loginslider from "@/component/Login/LoginSlider/Loginslider";
 import Link from "next/link";
 import eyeson from "@/assets/images/icons/eyeon_icn.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/hooks";
 import { FormData } from "./LoginType";
 import { loginAction } from "@/store/actions/authAction";
 import { ThreeDots } from "react-loader-spinner";
 import { ROUTES_PATH } from "@/utils/constant";
+import SimpleReactValidator from "simple-react-validator";
 
 const Login = () => {
   const [loading, setloading] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const simpleValidator = useRef<SimpleReactValidator>(
+    new SimpleReactValidator()
+  );
+  const [, forceUpdate] = useState<number>(0);
+
   const defaultForm = {
     username: "",
     password: "",
@@ -32,11 +38,20 @@ const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+
+    
     setloading(true);
     try {
-      let res = await dispatch(loginAction(formData));
-    
-      router.push(ROUTES_PATH.HOME)
+      if (simpleValidator.current.allValid()){
+
+        let res = await dispatch(loginAction(formData));
+      
+        router.push(ROUTES_PATH.HOME)
+      }else {
+        simpleValidator.current.showMessages();
+        forceUpdate(1);
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -66,7 +81,15 @@ const Login = () => {
                      placeholder="johnsnow@gmail.com"
                      value={formData.username}
                      onChange={handleInputChange}
+                     onBlur={() =>
+                      simpleValidator?.current.showMessageFor("username")
+                    }
                   />
+                   {simpleValidator?.current?.message(
+                    "username",
+                    formData?.username,
+                    "required"
+                  )}
                 </div>
                 <div className="mb-3">
                   <label htmlFor="password" className="ele_lable">Password</label>
@@ -79,7 +102,15 @@ const Login = () => {
                     placeholder="********"
                     value={formData.password}
                     onChange={handleInputChange}
-                    />
+                    onBlur={() =>
+                      simpleValidator?.current.showMessageFor("password")
+                    }
+                  />
+                   {simpleValidator?.current?.message(
+                    "password",
+                    formData?.password,
+                    "required"
+                  )}
                     <button type="button" className="btn_eyeimg">
                       <Image className="psw_hide" src={eyeson} alt="icons" />
                     </button>

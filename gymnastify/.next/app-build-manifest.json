@@ -23,11 +23,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(public)/layout.js"
     ],
-    "/(public)/registration/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(public)/registration/page.js"
-    ],
     "/(public)/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -39,16 +34,53 @@
       "static/css/app/(private)/home/page.css",
       "static/chunks/app/(private)/home/page.js"
     ],
+    "/(public)/registration/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(public)/registration/page.js"
+    ],
     "/(public)/thankyou/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(public)/thankyou/page.js"
+    ],
+    "/(guest)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(guest)/layout.css",
+      "static/chunks/app/(guest)/layout.js"
+    ],
+    "/(guest)/guest/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(guest)/guest/page.css",
+      "static/chunks/app/(guest)/guest/page.js"
     ],
     "/(private)/watch-list/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/(private)/watch-list/page.css",
       "static/chunks/app/(private)/watch-list/page.js"
+    ],
+    "/(private)/assignments/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(private)/assignments/page.js"
+    ],
+    "/(private)/instructor-chat/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(private)/instructor-chat/page.js"
+    ],
+    "/(private)/single-class/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(private)/single-class/[slug]/page.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
     ]
   }
 }
