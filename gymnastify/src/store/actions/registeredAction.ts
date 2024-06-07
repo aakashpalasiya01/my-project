@@ -1,20 +1,33 @@
 "use client";
-import { RegisteredPagination } from "@/component/Home/Register";
+// import { RegisteredPagination } from "@/component/Home/Register";
 import * as API from "../serverApiAction/clientApis";
+import * as registerReducer from '../reducers/registeredReducer'
+import { AppDispatch } from "../store";
 
-export const registerPageUserSkills = async(id: string | number) => {
+
+
+export const registerPageUserSkills=(id: string | number) => async(dispatch: AppDispatch) => {
     const response = await API.get(`/wp-json/wp/v2/skill_dictionary/?user_id=${id}&${new Date().toString()}`);
+    dispatch(registerReducer.setRegisterlevels(response.data));
     return response.data.data;
 }
 
-export const registeredPageClasses  = async (params:RegisteredPagination) => { 
+
+
+
+
+export const registeredClasses  = (params:any) => async(dispatch: AppDispatch) =>  {
     const response = await API.get(`/wp-json/wp/v2/class/`, params);
-    return response.data;
+    dispatch(registerReducer.setRegisterClasses(response.data.data));
+    return response.data.data;
 };
   
 
-export const RegisterPageTopBanner = async() =>  {
+
+
+export const RegisterPageTopBanner = () => async(dispatch: AppDispatch) =>  {
     const response = await API.get("/wp-json/wp/v2/banner?banner_name=subscribe_banner_2");
+    dispatch(registerReducer.setRegisterbanner(response.data.data));
     return response.data.data;
   };
 

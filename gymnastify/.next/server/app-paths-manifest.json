@@ -1,10 +1,3 @@
 {
-  "/not-found": "app/not-found.js",
-  "/(public)/login/page": "app/(public)/login/page.js",
-  "/(private)/home/page": "app/(private)/home/page.js",
-  "/(private)/instructor-chat/page": "app/(private)/instructor-chat/page.js",
-  "/(private)/watch-list/page": "app/(private)/watch-list/page.js",
-  "/(private)/single-class/[slug]/page": "app/(private)/single-class/[slug]/page.js",
-  "/(guest)/guest/page": "app/(guest)/guest/page.js",
   "/(private)/page": "app/(private)/page.js"
 }

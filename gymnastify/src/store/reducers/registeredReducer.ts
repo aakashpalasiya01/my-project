@@ -4,7 +4,7 @@ import {
   RegisteredReducersType,
   levelSkills,
   RegsiterBanner,
-} from "@/component/Home/Register";
+} from "@/types/HomeType/";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: RegisteredReducersType = {
@@ -27,6 +27,7 @@ const initialState: RegisteredReducersType = {
     },
     skills: [],
   },
+  Registerbanner:{},
   RegisterClasses: [],
   ExploreCard: [],
   Loaded: false,
@@ -41,6 +42,9 @@ export const RegisteredSlice = createSlice({
   reducers: {
     setRegisterlevels: (state, action: PayloadAction<levelSkills>) => {
       state.RegisterLevel = action.payload;
+    },
+    setRegisterbanner: (state, action: PayloadAction<levelSkills>) => {
+      state.Registerbanner = action.payload;
     },
     setRegisterClasses: (state, action: PayloadAction<ClassesDataType[]>) => {
       state.RegisterClasses = action.payload;
@@ -86,6 +90,7 @@ export const {
   setSearchClasses,
   setLoadedRegisterBanner,
   setRegVideoLoader,
+  setRegisterbanner,
   setRegisterWatchlistStatus,
   setRegisterFaviroteStatus
 } = RegisteredSlice.actions;

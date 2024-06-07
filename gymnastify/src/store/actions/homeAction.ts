@@ -124,10 +124,12 @@ export const guestHomePageReview = () => async (dispatch: AppDispatch) => {
 //   }
 // }
 
-export const exploreSkillHome = async () => {
-  const response = await API.get(`/wp-json/wp/v2/usag_level/`);
-  return response;
+export const exploreSkillHome = () => async (dispatch: AppDispatch) => {
+  const response = await API.get("/wp-json/wp/v2/level_skills");
+  dispatch(homeReducer.setTaxonomyDetail(response.data.data));
+  return response.data;
 };
+
 
 
 
