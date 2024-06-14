@@ -15,16 +15,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     Aos.init({ duration: 2000 });
   }, []);
   return (
-    <SkeletonTheme baseColor="#fff" highlightColor="#000">
-     
-      <ToastContainer />
+    // <SkeletonTheme baseColor="#fff" highlightColor="#000">
+     <>
+         <ToastContainer />
       <CommonDialog />
       <Provider store={store}>
         <Suspense>
           <RouterGuard>{children}</RouterGuard>
         </Suspense>
       </Provider>
-    </SkeletonTheme>
+  </>
+    // </SkeletonTheme>
   );
 };
 

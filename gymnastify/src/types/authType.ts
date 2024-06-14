@@ -74,7 +74,7 @@ export type BusinessForm = {
 export type AuthState = {
   token: string | null;
   refresh_token: string;
-  user: UserDataType | undefined;
+  user: UserDataType ;
   isLoaded: boolean;
   ImageSlider: any;
   whatWeOfferList: any;
@@ -85,7 +85,7 @@ export type AuthState = {
 };
 
 export type UserDataType = {
-  user_id: string | number;
+  user_id: string ;
   first_name: string;
   last_name: string;
   email: string;

@@ -34,6 +34,7 @@ const initialState: RegisteredReducersType = {
   LoadedClasses: false,
   LoadedRegisterBanner: false,
   RegVideoLoader:false,
+  LevelSkill:'',
 };
 
 export const RegisteredSlice = createSlice({
@@ -45,6 +46,9 @@ export const RegisteredSlice = createSlice({
     },
     setRegisterbanner: (state, action: PayloadAction<levelSkills>) => {
       state.Registerbanner = action.payload;
+    },
+    setSkill: (state, action: PayloadAction<string>) => {
+      state.LevelSkill = action.payload;
     },
     setRegisterClasses: (state, action: PayloadAction<ClassesDataType[]>) => {
       state.RegisterClasses = action.payload;
@@ -92,7 +96,8 @@ export const {
   setRegVideoLoader,
   setRegisterbanner,
   setRegisterWatchlistStatus,
-  setRegisterFaviroteStatus
+  setRegisterFaviroteStatus,
+  setSkill
 } = RegisteredSlice.actions;
 
 export default RegisteredSlice.reducer;

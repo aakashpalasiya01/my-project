@@ -91,3 +91,23 @@ interface Meta {
   length:number
 
 }
+interface LevelSkill {
+  id: string;
+  name: string;
+}
+
+interface ClassInfo {
+  class_id: string;
+  image: {
+    normalImage: string;
+  };
+  level_skills: string[];
+  usag_level: string[];
+  title: string;
+  vimeo_data: {
+    preview_video_length: string;
+  };
+}
+ export interface FetchClassesResponse {
+  classes: ClassInfo[];
+}

@@ -8,7 +8,7 @@ import { AppDispatch } from "../store";
 
 export const registerPageUserSkills=(id: string | number) => async(dispatch: AppDispatch) => {
     const response = await API.get(`/wp-json/wp/v2/skill_dictionary/?user_id=${id}&${new Date().toString()}`);
-    dispatch(registerReducer.setRegisterlevels(response.data));
+    dispatch(registerReducer.setRegisterlevels(response.data.data));
     return response.data.data;
 }
 
@@ -18,7 +18,7 @@ export const registerPageUserSkills=(id: string | number) => async(dispatch: App
 
 export const registeredClasses  = (params:any) => async(dispatch: AppDispatch) =>  {
     const response = await API.get(`/wp-json/wp/v2/class/`, params);
-    dispatch(registerReducer.setRegisterClasses(response.data.data));
+    dispatch(registerReducer.setRegisterClasses(response.data.data.classes));
     return response.data.data;
 };
   

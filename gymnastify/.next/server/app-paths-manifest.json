@@ -1,3 +1,5 @@
 {
-  "/(private)/page": "app/(private)/page.js"
+  "/(private)/page": "app/(private)/page.js",
+  "/(public)/login/page": "app/(public)/login/page.js",
+  "/(private)/home/page": "app/(private)/home/page.js"
 }
