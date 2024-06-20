@@ -7,36 +7,53 @@ import closedWatch from "@/assets/images/icons/closed_watch.svg";
 import React, { useEffect, useState} from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { registeredClasses } from "@/store/actions/registeredAction";
+import { ClassType } from "@/types/RegisterTypes";
+import Skeleton from "react-loading-skeleton";
 
 const Classes = () => {
   const dispatch = useAppDispatch();
-  const {LevelSkill,RegisterLevel,RegisterClasses}=useAppSelector((state)=>state.registered)
+  const { LevelSkill, RegisterLevel, RegisterClasses } = useAppSelector((state) => state.registered);
+
   let Defaulpagination = {
-    page : 1,
-    per_page : 12,
+    page: 1,
+    per_page: 12,
     group: RegisterLevel?.level?.slug,
     cache: new Date(),
-    level_skills:LevelSkill,
-    search:''
+    level_skills: LevelSkill,
+    search: ''
   };
-  const [pagination,setPagination]=useState(Defaulpagination)
-  console.log(RegisterLevel)
 
-
+  const [pagination, setPagination] = useState(Defaulpagination);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (pagination?.group)
-    dispatch(registeredClasses(pagination))
+    if (pagination?.group) {
+      setLoading(true);
+      dispatch(registeredClasses(pagination)).finally(() => setLoading(false));
+    }
   }, [pagination]);
 
-
   useEffect(() => {
-    if (RegisterLevel?.level?.slug){
-      setPagination({...pagination,group:RegisterLevel?.level?.slug,level_skills:LevelSkill})
+    if (RegisterLevel?.level?.slug) {
+      setPagination({
+        ...pagination,
+        group: RegisterLevel?.level?.slug,
+        level_skills: LevelSkill
+      });
     }
-  }, [RegisterLevel?.level?.slug,LevelSkill])
+  }, [RegisterLevel?.level?.slug, LevelSkill]);
+
+  const loadMore = () => {
+    setPagination({
+      ...pagination,
+      page: pagination.page + 1
+    });
+  };
+
+  const shouldShowLoadMore = RegisterClasses.total_pages > pagination.page && RegisterClasses.classes.length >= pagination.per_page;
+
   
-console.log(RegisterClasses)
+  
   return (
     <section className="classes_area">
       <div className="filter">
@@ -80,8 +97,14 @@ console.log(RegisterClasses)
         <div className="sec_title_md">
           <h5>Classes</h5>
         </div>
-        <div className="row">
-          {RegisterClasses?.map((classinfo) => (
+        {loading ?<div style={{display:"flex",gap:30 }}>
+          <Skeleton height={150} width={300} borderRadius={10} count={2}/>
+          <Skeleton height={150} width={300} borderRadius={10} count={2}/>
+          <Skeleton height={150} width={300} borderRadius={10} count={2}/>
+          <Skeleton height={150} width={300} borderRadius={10} count={2}/>
+        
+          </div> :<div className="row">
+          {RegisterClasses?.classes?.map((classinfo:ClassType) => (
             <div
               key={classinfo.class_id}
               className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
@@ -164,11 +187,13 @@ console.log(RegisterClasses)
               </div>
             </div>
           ))}
-        </div>
+        </div>} 
         <div className="btn_videos text-center">
-          <button className="btn_animated btn_blockmd primary_btn">
+        {shouldShowLoadMore && !loading && (
+   <button onClick={loadMore} className="btn_animated btn_blockmd primary_btn">
             Load More
           </button>
+      )}
         </div>
       </div>
     </section>

@@ -6,17 +6,17 @@
       "static/css/app/(private)/page.css",
       "static/chunks/app/(private)/page.js"
     ],
-    "/(private)/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/(private)/layout.css",
-      "static/chunks/app/(private)/layout.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/(private)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(private)/layout.css",
+      "static/chunks/app/(private)/layout.js"
     ],
     "/(public)/layout": [
       "static/chunks/webpack.js",
@@ -33,6 +33,11 @@
       "static/chunks/main-app.js",
       "static/css/app/(private)/home/page.css",
       "static/chunks/app/(private)/home/page.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
     ]
   }
 }

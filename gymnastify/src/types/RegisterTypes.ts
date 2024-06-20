@@ -31,11 +31,44 @@ interface ExploreCard {
   // Define properties if known, else leave as empty array type
   [key: string]: any;
 }
+type Image = {
+  normalImage: string;
+  retinaImage: string;
+};
+
+// Define the type for the Vimeo data object
+type VimeoData = {
+  video_id: number;
+  video_length: string;
+  pictures: string;
+  preview_video: string;
+  preview_video_length: string;
+};
+
+// Define the type for a class object
+export type ClassType = {
+  class_id: number;
+  title: string;
+  content: string;
+  class_url: string;
+  image: Image;
+  instructors: string[];
+  level_skills: string[];
+  group: string[];
+  usag_level: string[];
+  props: string[];
+  vimeo_data: VimeoData;
+  favorite: boolean;
+  watchlist: boolean;
+  rating_count: number;
+  average_rating: string;
+  current_user_rating: number;
+};
 
 interface RegisteredReducersType {
   RegisterLevel: RegisterLevel;
   Registerbanner: Registerbanner;
-  RegisterClasses: any[]; // Define a more specific type if known
+  RegisterClasses: ClassType[]; 
   ExploreCard: ExploreCard[];
   Loaded: boolean;
   LoadedClasses: boolean;

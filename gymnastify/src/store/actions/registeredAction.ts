@@ -18,7 +18,7 @@ export const registerPageUserSkills=(id: string | number) => async(dispatch: App
 
 export const registeredClasses  = (params:any) => async(dispatch: AppDispatch) =>  {
     const response = await API.get(`/wp-json/wp/v2/class/`, params);
-    dispatch(registerReducer.setRegisterClasses(response.data.data.classes));
+    dispatch(registerReducer.setRegisterClasses(response.data.data));
     return response.data.data;
 };
   
