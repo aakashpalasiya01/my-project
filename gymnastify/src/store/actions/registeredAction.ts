@@ -3,6 +3,7 @@
 import * as API from "../serverApiAction/clientApis";
 import * as registerReducer from '../reducers/registeredReducer'
 import { AppDispatch } from "../store";
+import { ParamsType } from "@/types/RegisterTypes";
 
 
 
@@ -16,7 +17,7 @@ export const registerPageUserSkills=(id: string | number) => async(dispatch: App
 
 
 
-export const registeredClasses  = (params:any) => async(dispatch: AppDispatch) =>  {
+export const registeredClasses  = (params:ParamsType) => async(dispatch: AppDispatch) =>  {
     const response = await API.get(`/wp-json/wp/v2/class/`, params);
     dispatch(registerReducer.setRegisterClasses(response.data.data));
     return response.data.data;

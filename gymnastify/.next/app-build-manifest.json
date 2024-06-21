@@ -18,21 +18,22 @@
       "static/css/app/(private)/layout.css",
       "static/chunks/app/(private)/layout.js"
     ],
-    "/(public)/layout": [
+    "/(private)/watch-list/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(public)/layout.js"
-    ],
-    "/(public)/login/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(public)/login/page.js"
+      "static/css/app/(private)/watch-list/page.css",
+      "static/chunks/app/(private)/watch-list/page.js"
     ],
     "/(private)/home/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/(private)/home/page.css",
       "static/chunks/app/(private)/home/page.js"
+    ],
+    "/(private)/assignments/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(private)/assignments/page.js"
     ],
     "/not-found": [
       "static/chunks/webpack.js",

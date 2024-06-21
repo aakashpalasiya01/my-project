@@ -104,3 +104,16 @@ const initialState: RegisteredReducersType = {
   LoadedRegisterBanner: false,
   RegVideoLoader: false,
 };
+
+interface LevelSkillType {
+  skills: string[];
+}
+export interface ParamsType {
+  page: number;
+  per_page: number;
+  group?: string;
+  cache: Date;
+  level_skills: LevelSkillType;
+  search: string;
+  order:string;
+}
