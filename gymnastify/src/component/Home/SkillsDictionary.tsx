@@ -35,7 +35,6 @@ const SkillsDictionary = () => {
        dispatch(setSkill(skill));
    }
 
-console.log('LevelSkill',LevelSkill)
   return (
     <section className="offeres_block">
       <div className="weve_got">

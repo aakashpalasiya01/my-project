@@ -40,7 +40,6 @@ const AccountInfo: React.FC<AccountInfoProps> = ({ handleChange, form }) => {
             finalData.append(key, value.toString());
           }
         }
-      console.log(form)
       
         const res = await dispatch(registerData(finalData));
         router.push(ROUTES_PATH.THANKYOU)

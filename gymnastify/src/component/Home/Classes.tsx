@@ -7,21 +7,22 @@ import closedWatch from "@/assets/images/icons/closed_watch.svg";
 import React, { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { registeredClasses } from "@/store/actions/registeredAction";
-import { ClassType } from "@/types/RegisterTypes";
+import { ClassType, ParamsType } from "@/types/RegisterTypes";
 import Skeleton from "react-loading-skeleton";
-import debounce from '@/shared/common-component/Debounce'
+import debounce from '@/shared/common-component/Debounce';
+
 const Classes = () => {
-
-
   const dispatch = useAppDispatch();
   const { LevelSkill, RegisterLevel, RegisterClasses } = useAppSelector(
     (state) => state.registered
   );
+
   const [sortByAscDesc, setSortByAscDesc] = useState("asc");
   const [searchTitle, setSearchTitle] = useState("");
-  console.log("🚀 ~ Classes ~ setSearchTitle:", setSearchTitle);
+  const [classesData, setClassesData] = useState([]); 
+  const [loading, setLoading] = useState(true);
 
-  let Defaulpagination = {
+  const DefaultPagination:ParamsType = {
     page: 1,
     per_page: 12,
     group: RegisterLevel?.level?.slug,
@@ -30,16 +31,20 @@ const Classes = () => {
     order: sortByAscDesc,
     search: "",
   };
-
-  const [pagination, setPagination] = useState(Defaulpagination);
-  const [loading, setLoading] = useState(true);
+  const [pagination, setPagination] = useState<ParamsType>(DefaultPagination);
 
   useEffect(() => {
     if (pagination?.group) {
       setLoading(true);
-      dispatch(registeredClasses(pagination)).finally(() => setLoading(false));
+      dispatch(registeredClasses(pagination)).then((response) => {
+        const fetchedClasses = response.classes;
+        setClassesData((prevClasses) => (
+          pagination.page === 1 ? fetchedClasses : [...prevClasses, ...fetchedClasses]
+        ));
+        setLoading(false);
+      });
     }
-  }, [pagination, sortByAscDesc]);
+  }, [pagination, dispatch]);
 
   const debouncedSetPagination = useRef(
     debounce((updatedPagination) => {
@@ -50,9 +55,20 @@ const Classes = () => {
   useEffect(() => {
     debouncedSetPagination({
       ...pagination,
+      page: 1, 
       search: searchTitle,
     });
-  }, [searchTitle]);
+    setClassesData([]); 
+  }, [searchTitle, debouncedSetPagination]);
+
+  useEffect(() => {
+    setPagination({
+      ...pagination,
+      page: 1, 
+      order: sortByAscDesc,
+    });
+    setClassesData([]); 
+  }, [sortByAscDesc]);
 
   useEffect(() => {
     if (RegisterLevel?.level?.slug) {
@@ -65,16 +81,17 @@ const Classes = () => {
   }, [RegisterLevel?.level?.slug, LevelSkill]);
 
   const loadMore = () => {
-    setPagination({
-      ...pagination,
-      page: pagination.page + 1,
-    });
+    setPagination((prevPagination) => ({
+      ...prevPagination,
+      page: prevPagination.page + 1,
+    }));
   };
+
   const shouldShowLoadMore =
     RegisterClasses.total_pages > pagination.page &&
     RegisterClasses.classes.length >= pagination.per_page;
 
-  const handleSort = (order: string) => {
+  const handleSort = (order:string) => {
     setSortByAscDesc(order);
   };
 
@@ -148,7 +165,7 @@ const Classes = () => {
           <div className="row">
             {RegisterClasses?.classes?.length > 0 ? (
               <>
-                {RegisterClasses?.classes?.map((classinfo: ClassType) => (
+                {classesData?.map((classinfo: ClassType) => (
                   <div
                     key={classinfo.class_id}
                     className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
@@ -214,11 +231,11 @@ const Classes = () => {
                                   alt="icons"
                                   width={15}
                                   height={15}
-                                ></Image>
+                                />
                               </button>
                               <Link href={`/single-class/fdbf`}>
                                 <button type="button">
-                                  <Image src={playicn} alt="icosn" />
+                                  <Image src={playicn} alt="icons" />
                                 </button>
                               </Link>
                             </div>
@@ -236,7 +253,7 @@ const Classes = () => {
                 ))}
               </>
             ) : (
-              <div>no classess</div>
+              <div>no classes</div>
             )}
           </div>
         )}

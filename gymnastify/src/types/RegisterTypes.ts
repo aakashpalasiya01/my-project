@@ -17,7 +17,7 @@ interface Level {
   meta: Meta;
 }
 
-interface RegisterLevel {
+export interface RegisterLevel {
   level: Level;
   skills: any[]; // Define a more specific type if known
 }
@@ -48,6 +48,7 @@ type VimeoData = {
 // Define the type for a class object
 export type ClassType = {
   class_id: number;
+  total_pages:number;
   title: string;
   content: string;
   class_url: string;
@@ -63,9 +64,10 @@ export type ClassType = {
   rating_count: number;
   average_rating: string;
   current_user_rating: number;
+  classes:any[]
 };
 
-interface RegisteredReducersType {
+ export interface RegisteredReducersType {
   RegisterLevel: RegisterLevel;
   Registerbanner: Registerbanner;
   RegisterClasses: ClassType[]; 
@@ -74,46 +76,18 @@ interface RegisteredReducersType {
   LoadedClasses: boolean;
   LoadedRegisterBanner: boolean;
   RegVideoLoader: boolean;
+  LevelSkill:string;
+ 
 }
 
-const initialState: RegisteredReducersType = {
-  RegisterLevel: {
-    level: {
-      term_id: 0,
-      name: "",
-      slug: "",
-      term_group: 0,
-      term_taxonomy_id: 0,
-      taxonomy: "",
-      description: "",
-      parent: 0,
-      count: 0,
-      filter: "",
-      meta: {
-        image: "",
-        label_name: "",
-      },
-    },
-    skills: [],
-  },
-  Registerbanner: {},
-  RegisterClasses: [],
-  ExploreCard: [],
-  Loaded: false,
-  LoadedClasses: false,
-  LoadedRegisterBanner: false,
-  RegVideoLoader: false,
-};
 
-interface LevelSkillType {
-  skills: string[];
-}
+
 export interface ParamsType {
   page: number;
   per_page: number;
   group?: string;
   cache: Date;
-  level_skills: LevelSkillType;
+  level_skills: any
   search: string;
   order:string;
 }

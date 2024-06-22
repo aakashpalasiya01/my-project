@@ -1,10 +1,7 @@
 "use client";
-import {
-  ClassesDataType,
-  RegisteredReducersType,
-  levelSkills,
-  RegsiterBanner,
-} from "@/types/HomeType/";
+
+
+import {ClassType, RegisteredReducersType, RegisterLevel} from '../../types/RegisterTypes'
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: RegisteredReducersType = {
@@ -41,22 +38,20 @@ export const RegisteredSlice = createSlice({
   name: "registered",
   initialState,
   reducers: {
-    setRegisterlevels: (state, action: PayloadAction<levelSkills>) => {
+    setRegisterlevels: (state, action: PayloadAction<RegisterLevel>) => {
       state.RegisterLevel = action.payload;
     },
-    setRegisterbanner: (state, action: PayloadAction<levelSkills>) => {
+    setRegisterbanner: (state, action: PayloadAction<RegisteredReducersType>) => {
       state.Registerbanner = action.payload;
     },
     setSkill: (state, action: PayloadAction<string>) => {
       state.LevelSkill = action.payload;
     },
-    setRegisterClasses: (state, action: PayloadAction<ClassesDataType[]>) => {
+    setRegisterClasses: (state, action: PayloadAction<ClassType[]>) => {
       state.RegisterClasses = action.payload;
     },
-    setSearchClasses: (state, action: PayloadAction<ClassesDataType[]>) => {
-      state.RegisterClasses = action.payload;
-    },
-    setExploreCard: (state, action: PayloadAction<RegsiterBanner>) => {
+  
+    setExploreCard: (state, action: PayloadAction<ExploreCard>) => {
       state.ExploreCard = action.payload;
     },
     setLoader: (state, action: PayloadAction<boolean>) => {
@@ -91,7 +86,6 @@ export const {
   setLoader,
   setExploreCard,
   setClassesLoader,
-  setSearchClasses,
   setLoadedRegisterBanner,
   setRegVideoLoader,
   setRegisterbanner,

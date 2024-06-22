@@ -29,24 +29,6 @@ export const guestHomeHeroSection = () => async (dispatch: AppDispatch) => {
   return response.data;
 };
 
-// export async function NeedExpertGuidance() {
-//   try {
-//     const response = await API.get(
-//       "/wp-json/wp/v2/banner?banner_name=subscribe_banner_1"
-//     );
-//     if (response.success) {
-//       return { success: true, data: response.data };
-//     } else {
-//       console.log("HomeAPI:");
-//     }
-//   } catch (error: any) {
-//     console.log("Error during HomeAPI:", error.message);
-//     return {
-//       success: false,
-//       message: error.message || "An unknown error occurred.",
-//     };
-//   }
-// }
 export const guestHomePageNeedExpertGuidance =
   () => async (dispatch: AppDispatch) => {
     const response = await API.get(
@@ -64,24 +46,7 @@ export const guestHomePageAssignment = () => async (dispatch: AppDispatch) => {
   return response.data;
 };
 
-// export async function MaximizeGymnasticsExperience() {
-//   try {
-//     const response = await API.get(
-//       "/wp-json/wp/v2/banner?banner_name=subscribe_banner_2"
-//     );
-//     if (response.success) {
-//       return { success: true, data: response.data };
-//     } else {
-//       console.log("MaximizeGymnasticsExperience:");
-//     }
-//   } catch (error: any) {
-//     console.log("Error during MaximizeGymnasticsExperience:", error.message);
-//     return {
-//       success: false,
-//       message: error.message || "An unknown error occurred.",
-//     };
-//   }
-// }
+
 export const explorerPageTopBanner = () => async (dispatch: AppDispatch) => {
   const response = await API.get(
     "/wp-json/wp/v2/banner?banner_name=subscribe_banner_2"
@@ -104,25 +69,7 @@ export const guestHomePageReview = () => async (dispatch: AppDispatch) => {
 
 
 
-// export async function ClasseUnique(id: any) {
-//   try {
-//     const response = await API.get(
-//       `/wp-json/wp/v2/class/${id}/more-preview-video`
-//     );
-//     if (response.success) {
-//       return { success: true, data: response.data };
-//     } else {
-//       console.log("ClasseUnique failed: ");
-//       return { success: false };
-//     }
-//   } catch (error: any) {
-//     console.log("Error during ClasseUnique action:", error.message);
-//     return {
-//       success: false,
-//       message: error.message || "An unknown error occurred.",
-//     };
-//   }
-// }
+
 
 export const exploreSkillHome = () => async (dispatch: AppDispatch) => {
   const response = await API.get("/wp-json/wp/v2/level_skills");
@@ -132,47 +79,6 @@ export const exploreSkillHome = () => async (dispatch: AppDispatch) => {
 
 
 
-
-// export async function Skilldictionary(id: any) {
-//   try {
-//     const response = await API.get(
-//       `/wp-json/wp/v2/skill_dictionary/?user_id=${id}`
-//     );
-//     if (response.success) {
-//       return { success: true, data: response.data };
-//     } else {
-//       console.log("Skilldictionary failed: ", response.message);
-//       return { success: false };
-//     }
-//   } catch (error: any) {
-//     console.log("Error during Skilldictionary action:", error.message);
-//     return {
-//       success: false,
-//       message: error.message || "An unknown error occurred.",
-//     };
-//   }
-// }
-
-// export async function props_SingleClassPage() {
-//   try {
-//     const response = await API.get(`/wp-json/wp/v2/props/`);
-//     if (response.success) {
-//       return { success: true, data: response.data };
-//     } else {
-//       console.log("Exploreskill_Skilldictionary failed: ", response);
-//       return { success: false };
-//     }
-//   } catch (error: any) {
-//     console.log(
-//       "Error during Exploreskill_Skilldictionary action:",
-//       error.message
-//     );
-//     return {
-//       success: false,
-//       message: error.message || "An unknown error occurred.",
-//     };
-//   }
-// }
 
 
 export const SocialIconAction = async () => {

@@ -1,6 +1,6 @@
 {
   "/not-found": "app/not-found.js",
-  "/(private)/watch-list/page": "app/(private)/watch-list/page.js",
   "/(private)/page": "app/(private)/page.js",
+  "/(public)/login/page": "app/(public)/login/page.js",
   "/(private)/home/page": "app/(private)/home/page.js"
 }
