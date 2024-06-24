@@ -3,6 +3,25 @@ interface Meta {
   label_name: string;
 }
 
+
+
+
+export interface FavParamtypes {
+  page: number;
+  per_page: number;
+  level_skills: string;
+  search: string;
+  order_by: string;
+  order: string;
+  class_data: number;
+  total_data: number;
+  group: string;
+  user_id: string;
+  cache: string;
+  class_id: number;
+}
+
+
 interface Level {
   term_id: number;
   name: string;
@@ -27,7 +46,7 @@ interface Registerbanner {
   [key: string]: any;
 }
 
-interface ExploreCard {
+export interface ExploreCard {
   // Define properties if known, else leave as empty array type
   [key: string]: any;
 }
@@ -44,7 +63,9 @@ type VimeoData = {
   preview_video: string;
   preview_video_length: string;
 };
-
+  export type indivisualclass={
+    total_pages:number;
+  }
 // Define the type for a class object
 export type ClassType = {
   class_id: number;
@@ -64,13 +85,22 @@ export type ClassType = {
   rating_count: number;
   average_rating: string;
   current_user_rating: number;
-  classes:any[]
+  classes:indivisualclass[]
 };
+
+
+export interface RegisterClassTs {
+  classes:ClassType[];
+  current_page: number;
+  total_classes:number;
+  total_pages:number;
+
+}
 
  export interface RegisteredReducersType {
   RegisterLevel: RegisterLevel;
   Registerbanner: Registerbanner;
-  RegisterClasses: ClassType[]; 
+  RegisterClasses: RegisterClassTs; 
   ExploreCard: ExploreCard[];
   Loaded: boolean;
   LoadedClasses: boolean;
@@ -83,11 +113,16 @@ export type ClassType = {
 
 
 export interface ParamsType {
-  page: number;
   per_page: number;
   group?: string;
   cache: Date;
   level_skills: any
   search: string;
   order:string;
+  page: number;
+  order_by: string;
+  class_data: number | string;
+  total_data: number;
+  user_id: string;
+  class_id: number;
 }

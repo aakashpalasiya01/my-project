@@ -2,25 +2,30 @@ import Image from "next/image";
 import Dropdown from "react-bootstrap/Dropdown";
 import playicn from "@/assets/images/icons/play_icn.svg";
 import Link from "next/link";
-import isFavorites from "@/assets/images/icons/favorites_icn.svg";
+import Favorites from "@/assets/images/icons/favorites_icn.svg";
+import Unfavourite from "@/assets/images/icons/unfavorites_icn.svg"; 
 import closedWatch from "@/assets/images/icons/closed_watch.svg";
 import React, { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { registeredClasses } from "@/store/actions/registeredAction";
-import { ClassType, ParamsType } from "@/types/RegisterTypes";
+import {  AddFavourite, RemoveFavourite, registeredClasses } from "@/store/actions/registeredAction";
+import { ClassType, FavParamtypes, ParamsType, RegisterClassTs } from "@/types/RegisterTypes";
 import Skeleton from "react-loading-skeleton";
 import debounce from '@/shared/common-component/Debounce';
+import { RootState } from "@/store/store";
 
 const Classes = () => {
   const dispatch = useAppDispatch();
   const { LevelSkill, RegisterLevel, RegisterClasses } = useAppSelector(
-    (state) => state.registered
+    (state:RootState) => state.registered
   );
-
+  const { user_id } = useAppSelector(
+    (state: RootState) => state?.auth?.user ?? null
+  );
   const [sortByAscDesc, setSortByAscDesc] = useState("asc");
   const [searchTitle, setSearchTitle] = useState("");
   const [classesData, setClassesData] = useState([]); 
   const [loading, setLoading] = useState(true);
+  const [fetchedClasses, setFetchedClasses] = useState<RegisterClassTs>();
 
   const DefaultPagination:ParamsType = {
     page: 1,
@@ -32,18 +37,23 @@ const Classes = () => {
     search: "",
   };
   const [pagination, setPagination] = useState<ParamsType>(DefaultPagination);
+ 
 
-  useEffect(() => {
+   const ClassesDataFetch=()=>{
     if (pagination?.group) {
       setLoading(true);
       dispatch(registeredClasses(pagination)).then((response) => {
-        const fetchedClasses = response.classes;
+        setFetchedClasses(response);
         setClassesData((prevClasses) => (
-          pagination.page === 1 ? fetchedClasses : [...prevClasses, ...fetchedClasses]
+          pagination.page === 1 ? response.classes : [...prevClasses, ...response.classes]
         ));
         setLoading(false);
       });
     }
+   }
+
+  useEffect(() => {
+    ClassesDataFetch()
   }, [pagination, dispatch]);
 
   const debouncedSetPagination = useRef(
@@ -76,8 +86,10 @@ const Classes = () => {
         ...pagination,
         group: RegisterLevel?.level?.slug,
         level_skills: LevelSkill,
+        page: 1,
       });
     }
+    setClassesData([]);
   }, [RegisterLevel?.level?.slug, LevelSkill]);
 
   const loadMore = () => {
@@ -93,6 +105,27 @@ const Classes = () => {
 
   const handleSort = (order:string) => {
     setSortByAscDesc(order);
+  };
+
+  const handleFavorite = async (fav: boolean, classId: number) => {
+    const payload:ParamsType = {
+      ...pagination,
+      class_data: fetchedClasses?.total_classes ?? 0 ,
+      total_data: fetchedClasses?.total_pages ??0,
+      user_id: user_id,
+      class_id: classId,
+    };
+    let res;
+    if (fav) {
+      res = await (RemoveFavourite(payload))
+    } else {
+      res = await (AddFavourite(payload));
+    }
+    console.log(res)
+    if (res?.success) {
+      alert(`res?.message ${res?.data?.message}`);
+      ClassesDataFetch()
+    }
   };
 
   return (
@@ -165,7 +198,7 @@ const Classes = () => {
           <div className="row">
             {RegisterClasses?.classes?.length > 0 ? (
               <>
-                {classesData?.map((classinfo: ClassType) => (
+                {classesData?.map((classinfo:ClassType) => (
                   <div
                     key={classinfo.class_id}
                     className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
@@ -198,9 +231,9 @@ const Classes = () => {
                               ))}
                             </div>
                             <div className="favorites_btn">
-                              <button type="button">
+                              <button onClick={()=>handleFavorite(classinfo.favorite, classinfo.class_id)} type="button">
                                 <Image
-                                  src={isFavorites}
+                                  src={ classinfo?.favorite ? Favorites : Unfavourite}
                                   alt="favorites"
                                   width={19}
                                   height={21}
@@ -253,7 +286,26 @@ const Classes = () => {
                 ))}
               </>
             ) : (
-              <div>no classes</div>
+              <div className="row">
+                <div className="no_datafind">
+                  <div className="no_datafind_block">
+                    <div className="nodata_img">
+                      <img
+                        alt="icons"
+                        loading="lazy"
+                        width={128}
+                        height={128}
+                        decoding="async"
+                        data-nimg={1}
+                        srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fempty_boxicn.fff92f14.png&w=128&q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fempty_boxicn.fff92f14.png&w=256&q=75 2x"
+                        src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fempty_boxicn.fff92f14.png&w=256&q=75"
+                        style={{ color: "transparent" }}
+                      />
+                    </div>
+                    <p>No classes found</p>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         )}

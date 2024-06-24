@@ -1,7 +1,7 @@
 "use client";
 
 
-import {ClassType, RegisteredReducersType, RegisterLevel} from '../../types/RegisterTypes'
+import {ClassType, ExploreCard, RegisteredReducersType, RegisterLevel} from '../../types/RegisterTypes'
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: RegisteredReducersType = {
@@ -51,7 +51,7 @@ export const RegisteredSlice = createSlice({
       state.RegisterClasses = action.payload;
     },
   
-    setExploreCard: (state, action: PayloadAction<ExploreCard>) => {
+    setExploreCard: (state, action: PayloadAction<ExploreCard[]>) => {
       state.ExploreCard = action.payload;
     },
     setLoader: (state, action: PayloadAction<boolean>) => {

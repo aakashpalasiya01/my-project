@@ -3,7 +3,7 @@
 import * as API from "../serverApiAction/clientApis";
 import * as registerReducer from '../reducers/registeredReducer'
 import { AppDispatch } from "../store";
-import { ParamsType } from "@/types/RegisterTypes";
+import { FavParamtypes, ParamsType } from "@/types/RegisterTypes";
 
 
 
@@ -38,15 +38,18 @@ export const RegisterPageTopBanner = () => async(dispatch: AppDispatch) =>  {
   };
 
 
-// export const addHomePageFavouriteData = async(params:RegisteredPagination) => {
-//   const response = await API.post(`/wp-json/wp/v2/users/favorite/add/`,params);
-//   return response;
-// };
+export const AddFavourite = async(params:FavParamtypes) => {
+  
+  const response = await API.post(`/wp-json/wp/v2/users/favorite/add/`,params);
+  return response.data;
+};
 
-// export const removeHomePageFavoriteData = async(params:RegisteredPagination) => { 
-//   const response = await API.del(`/wp-json/wp/v2/users/favorite/remove/`, params);
-//   return response;
-// };
+export const RemoveFavourite = async(params:FavParamtypes) => { 
+  
+  const response = await API.del(`/wp-json/wp/v2/users/favorite/remove/`, params);
+
+  return response.data;
+};
 
 // export const addHomePageWatchList = async(params:RegisteredPagination) => {  
 //   const response = await API.post(`/wp-json/wp/v2/users/watchlist/add/`,params);
