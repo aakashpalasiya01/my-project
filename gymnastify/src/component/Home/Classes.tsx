@@ -3,31 +3,45 @@ import Dropdown from "react-bootstrap/Dropdown";
 import playicn from "@/assets/images/icons/play_icn.svg";
 import Link from "next/link";
 import Favorites from "@/assets/images/icons/favorites_icn.svg";
-import Unfavourite from "@/assets/images/icons/unfavorites_icn.svg"; 
+import Unfavourite from "@/assets/images/icons/unfavorites_icn.svg";
 import closedWatch from "@/assets/images/icons/closed_watch.svg";
 import React, { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import {  AddFavourite, RemoveFavourite, registeredClasses } from "@/store/actions/registeredAction";
-import { ClassType, FavParamtypes, ParamsType, RegisterClassTs } from "@/types/RegisterTypes";
+import {
+  AddFavourite,
+  AddWatchList,
+  RemoveFavourite,
+  RemoveWatchList,
+  registeredClasses,
+} from "@/store/actions/registeredAction";
+import {
+  ClassType,
+  RegisterClassTs,
+  classPayLoadType,
+} from "@/types/RegisterTypes";
 import Skeleton from "react-loading-skeleton";
-import debounce from '@/shared/common-component/Debounce';
+import debounce from "@/shared/common-component/Debounce";
 import { RootState } from "@/store/store";
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2";
+import { forSuccess } from "@/utils/CommonService";
+import PlusIcon from "@/assets/images/icons/plus_white_icn.svg";
 
 const Classes = () => {
   const dispatch = useAppDispatch();
   const { LevelSkill, RegisterLevel, RegisterClasses } = useAppSelector(
-    (state:RootState) => state.registered
+    (state: RootState) => state.registered
   );
   const { user_id } = useAppSelector(
     (state: RootState) => state?.auth?.user ?? null
   );
   const [sortByAscDesc, setSortByAscDesc] = useState("asc");
   const [searchTitle, setSearchTitle] = useState("");
-  const [classesData, setClassesData] = useState([]); 
+  const [classesData, setClassesData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [fetchedClasses, setFetchedClasses] = useState<RegisterClassTs>();
 
-  const DefaultPagination:ParamsType = {
+  const DefaultPagination: classPayLoadType = {
     page: 1,
     per_page: 12,
     group: RegisterLevel?.level?.slug,
@@ -36,24 +50,26 @@ const Classes = () => {
     order: sortByAscDesc,
     search: "",
   };
-  const [pagination, setPagination] = useState<ParamsType>(DefaultPagination);
- 
+  const [pagination, setPagination] =
+    useState<classPayLoadType>(DefaultPagination);
 
-   const ClassesDataFetch=()=>{
+  const ClassesDataFetch = () => {
     if (pagination?.group) {
       setLoading(true);
       dispatch(registeredClasses(pagination)).then((response) => {
         setFetchedClasses(response);
-        setClassesData((prevClasses) => (
-          pagination.page === 1 ? response.classes : [...prevClasses, ...response.classes]
-        ));
+        setClassesData((prevClasses) =>
+          pagination.page === 1
+            ? response.classes
+            : [...prevClasses, ...response.classes]
+        );
         setLoading(false);
       });
     }
-   }
+  };
 
   useEffect(() => {
-    ClassesDataFetch()
+    ClassesDataFetch();
   }, [pagination, dispatch]);
 
   const debouncedSetPagination = useRef(
@@ -65,19 +81,19 @@ const Classes = () => {
   useEffect(() => {
     debouncedSetPagination({
       ...pagination,
-      page: 1, 
+      page: 1,
       search: searchTitle,
     });
-    setClassesData([]); 
+    setClassesData([]);
   }, [searchTitle, debouncedSetPagination]);
 
   useEffect(() => {
     setPagination({
       ...pagination,
-      page: 1, 
+      page: 1,
       order: sortByAscDesc,
     });
-    setClassesData([]); 
+    setClassesData([]);
   }, [sortByAscDesc]);
 
   useEffect(() => {
@@ -103,31 +119,124 @@ const Classes = () => {
     RegisterClasses.total_pages > pagination.page &&
     RegisterClasses.classes.length >= pagination.per_page;
 
-  const handleSort = (order:string) => {
+  const handleSort = (order: string) => {
     setSortByAscDesc(order);
   };
 
-  const handleFavorite = async (fav: boolean, classId: number) => {
-    const payload:ParamsType = {
+  const handleFavorite = async (watch: boolean, classId: number) => {
+    if (watch) {
+      Swal.fire({
+        title: "Are you sure remove?",
+
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Removing From Favourites!",
+      }).then((result: any) => {
+        if (result.isConfirmed) {
+          handleFav(watch, classId);
+        }
+      });
+    } else {
+      handleFav(watch, classId);
+    }
+  };
+
+  const handleFav = async (watch: boolean, classId: number) => {
+    const payload: classPayLoadType = {
       ...pagination,
-      class_data: fetchedClasses?.total_classes ?? 0 ,
-      total_data: fetchedClasses?.total_pages ??0,
+      class_data: fetchedClasses?.total_classes ?? 0,
+      total_data: fetchedClasses?.total_pages ?? 0,
+      user_id: user_id,
+      class_id: classId,
+    };
+    let res;
+    if (watch) {
+      res = await RemoveFavourite(payload);
+    } else {
+      res = await AddFavourite(payload);
+    }
+
+    if (res?.success) {
+      if (res?.data?.message === "Favorite removed successfully.") {
+        Swal.fire({
+          title: "Removed!",
+          text: "Removing Favourite successfully.",
+          icon: "success",
+        }).then(() => {
+          ClassesDataFetch();
+        });
+      } else if (res?.data?.message === "Favorite added successfully!") {
+        forSuccess("Favorite added successfully!");
+
+        ClassesDataFetch();
+      }
+    } else if (res?.data?.message === "Class already favorited.") {
+      forSuccess("Class already favorited");
+      ClassesDataFetch();
+    }
+  };
+
+  const handleWatchList = (fav: boolean, classId: number) => {
+    if (fav) {
+      Swal.fire({
+        title: "Are you sure remove?",
+
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Removing From WatchList!",
+      }).then((result: any) => {
+        if (result.isConfirmed) {
+          handleWatch(fav, classId);
+        }
+      });
+    } else {
+      handleWatch(fav, classId);
+    }
+  };
+
+  const handleWatch = async (fav: boolean, classId: number) => {
+    const payload: classPayLoadType = {
+      ...pagination,
+      class_data: fetchedClasses?.total_classes ?? 0,
+      total_data: fetchedClasses?.total_pages ?? 0,
       user_id: user_id,
       class_id: classId,
     };
     let res;
     if (fav) {
-      res = await (RemoveFavourite(payload))
+      res = await RemoveWatchList(payload);
     } else {
-      res = await (AddFavourite(payload));
+      res = await AddWatchList(payload);
     }
-    console.log(res)
+
     if (res?.success) {
-      alert(`res?.message ${res?.data?.message}`);
-      ClassesDataFetch()
+      if (res?.data?.message === "removed from watchlist successfully!") {
+        Swal.fire({
+          title: "Removed!",
+          text: "Removing from watchlist successfully.",
+          icon: "success",
+        }).then(() => {
+          ClassesDataFetch();
+        });
+      } else {
+        forSuccess("Added to watchlist successfully!");
+
+        ClassesDataFetch();
+      }
     }
   };
 
+  function getSeconds(timeString: string): string {
+    const parts = timeString.split(':');
+    const seconds = parts[2];
+    return `${seconds} sec`;
+  }
+
+  console.log(RegisterClasses?.classes);
   return (
     <section className="classes_area">
       <div className="filter">
@@ -198,7 +307,7 @@ const Classes = () => {
           <div className="row">
             {RegisterClasses?.classes?.length > 0 ? (
               <>
-                {classesData?.map((classinfo:ClassType) => (
+                {classesData?.map((classinfo: ClassType) => (
                   <div
                     key={classinfo.class_id}
                     className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
@@ -231,9 +340,21 @@ const Classes = () => {
                               ))}
                             </div>
                             <div className="favorites_btn">
-                              <button onClick={()=>handleFavorite(classinfo.favorite, classinfo.class_id)} type="button">
+                              <button
+                                onClick={() =>
+                                  handleFavorite(
+                                    classinfo.favorite,
+                                    classinfo.class_id
+                                  )
+                                }
+                                type="button"
+                              >
                                 <Image
-                                  src={ classinfo?.favorite ? Favorites : Unfavourite}
+                                  src={
+                                    classinfo?.favorite
+                                      ? Favorites
+                                      : Unfavourite
+                                  }
                                   alt="favorites"
                                   width={19}
                                   height={21}
@@ -258,15 +379,27 @@ const Classes = () => {
                               </div>
                             </Link>
                             <div className="levels_btn">
-                              <button type="button">
+                              <button
+                                onClick={() =>
+                                  handleWatchList(
+                                    classinfo?.watchlist,
+                                    classinfo.class_id
+                                  )
+                                }
+                                type="button"
+                              >
                                 <Image
-                                  src={closedWatch}
+                                  src={
+                                    classinfo?.watchlist
+                                      ? closedWatch
+                                      : PlusIcon
+                                  }
                                   alt="icons"
                                   width={15}
                                   height={15}
                                 />
                               </button>
-                              <Link href={`/single-class/fdbf`}>
+                              <Link href={`/single-class/${classinfo?.vimeo_data?.video_id}`}>
                                 <button type="button">
                                   <Image src={playicn} alt="icons" />
                                 </button>
@@ -278,7 +411,10 @@ const Classes = () => {
                           <Link className="font12 adult_tags" href="#">
                             {classinfo?.title}
                           </Link>
-                          <span className="font12 duration">{`Duration - ${classinfo?.vimeo_data?.preview_video_length}`}</span>
+                          <span className="font12 duration">
+                            Duration -{" "}
+                            {getSeconds(classinfo?.vimeo_data?.video_length)}
+                          </span>
                         </div>
                       </div>
                     </div>

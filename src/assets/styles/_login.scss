@@ -1,0 +1,362 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.login_area {
+  padding: 20px;
+}
+
+.login_group {
+  width: calc(100% - 765px);
+  padding: 0 80px 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo_title {
+  padding-top: 35px;
+
+  a {
+    color: #131c1b;
+    font-size: 30px;
+    line-height: 48px;
+    font-weight: 700;
+    font-family: $font-domine;
+    text-decoration: none;
+    margin-bottom: 32px;
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: 30px;
+    line-height: 32px;
+    color: $black200;
+    font-weight: $ft-w600;
+    margin-top: 4px;
+    margin-bottom: 65px;
+  }
+}
+
+.login_block {
+  display: flex;
+  height: calc(100vh - 40px);
+
+  .login_frm {
+    max-width: 420px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    h4 {
+      color: $black;
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: $ft-w600;
+      margin-bottom: 23px;
+    }
+  }
+}
+
+.login_banner {
+  width: 765px;
+  overflow: hidden;
+  margin-left: 20px;
+  position: fixed;
+  right: 20px;
+
+  .carousel-indicators {
+    bottom: 27px;
+    gap: 5px;
+
+    button {
+      border-radius: (18px);
+      height: 6px;
+      width: 162px;
+      background-color: $white;
+      border: none;
+      opacity: inherit;
+    }
+
+    .active {
+      background-color: $danger;
+    }
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+
+  .login_abouts {
+    padding: 30px;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 32px;
+    color: #fff;
+    text-align: left;
+    left: 0;
+    right: 0;
+
+    p {
+      margin-bottom: 40px;
+    }
+  }
+
+  .carousel-item .loging_img {
+    background-size: 100% 100%;
+  }
+
+  .loging_img {
+    height: 96vh;
+  }
+}
+
+.forgot_psw {
+  display: block;
+  text-align: right;
+
+  a {
+    color: $black;
+    font-weight: $ft-w600;
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
+
+.btn_login {
+  text-align: center;
+  margin-top: 43px;
+
+  p {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: $ft-w600;
+
+    a {
+      color: $primary;
+      display: inline-block;
+      text-decoration: underline;
+    }
+  }
+}
+
+.login_ftr {
+  color: $black200;
+  text-align: center;
+  max-width: 420px;
+  margin: 20px auto 0;
+  cursor: pointer;
+
+  span {
+    color: $gray100;
+  }
+}
+
+.kids_row {
+  margin-right: -9px;
+  margin-left: -9px;
+}
+
+.kids_cols {
+  padding-right: 9px;
+  padding-left: 9px;
+}
+
+.Kid_info {
+  a {
+    color: #011d22;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: inline-block;
+    line-height: 32px;
+    text-decoration: underline;
+    pointer-events: none;
+  }
+}
+
+.follows_fter {
+  .footer_itemstitle {
+    padding: 0% 0 10px 0;
+
+    h6 {
+      color: $white;
+    }
+  }
+
+  ul {
+    display: flex;
+    margin-bottom: 0;
+    gap: 0 17px;
+  }
+}
+
+
+.register_page {
+  .logo_title {
+    padding-top: 35px;
+  }
+}
+
+/**registration flow*/
+.regist_gallery {
+  .media_wrap .media_imgup {
+    width: 33.333%;
+  }
+}
+
+.register_profile {
+  @extend %flex;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+
+  .register_profile_block {
+    @extend %flex;
+    align-items: center;
+
+    .register_upload_input {
+      display: none;
+    }
+
+    .login_useIcn {
+      flex-shrink: 0;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid #ccc;
+
+      img {
+        color: transparent;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .register_upload {
+      margin: 0 12px;
+      @include border-radius(5px);
+      padding: 8px 35px;
+      min-width: 238px;
+      text-align: center;
+    }
+  }
+}
+
+// Captured modal
+.captured_modal {
+  padding-left: 0;
+
+  .modal-dialog {
+    max-width: 500px;
+  }
+
+  .modal-header {
+    align-items: center;
+  }
+
+  .captured_upload,
+  .capture_img_btn {
+    text-align: center;
+  }
+
+  .capture_videos {
+    margin-bottom: 15px;
+    height: 380px;
+
+    video {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .captured_img {
+    height: 360px;
+    margin-bottom: 15px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .captured_upload {
+    display: flex;
+    gap: 5px 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+
+@media(max-width:1200px) {
+  .login_banner {
+    width: 50%;
+  }
+
+  .login_group {
+    width: 50%;
+  }
+}
+
+@media (max-width: 991px) {
+  .login_group {
+    text-align: center;
+    max-width: 560px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+
+    .ele_lable {
+      text-align: left;
+      display: block;
+    }
+  }
+
+  .login_block {
+    display: block;
+  }
+
+  .login_block .login_frm {
+    width: 100%;
+  }
+
+  .login_banner {
+    display: none;
+  }
+
+  .follows_fter .footer_itemstitle {
+    padding: 10px 0 10px 0;
+  }
+
+  .register_page .logo_title {
+    padding-top: 0;
+  }
+}
+
+@media(max-width:575px) {
+  .regist_gallery .media_wrap .media_imgup {
+    width: 50%;
+  }
+
+  .register_profile .register_profile_block .register_upload {
+    min-width: auto;
+    margin: 0 10px;
+  }
+}
+
+@media(max-width:360px) {
+  .register_profile .register_profile_block .register_upload {
+    margin: 0 12px;
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+}

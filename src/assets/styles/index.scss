@@ -1,0 +1,85 @@
+@import "bootstrap-scss/bootstrap";
+@import "function";
+@import "mixins";
+@import "custom_variables";
+@import "reset";
+@import "typography";
+@import "utilities";
+@import "button_styles";
+@import "header";
+@import "footer";
+@import "confirm_dialog";
+@import "login";
+@import "custom"; 
+@import "chat";
+@import "media";
+@import "developer";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+.scroll{
+  overflow: auto;
+  scrollbar-color: #a5cbf7 #ffffff;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #ffffff;
+  }
+  &::-webkit-scrollbar{
+    width: 9px;
+    height: 9px;
+    background-color: #1D2858;
+  }
+  &::-webkit-scrollbar-thumb{
+    background-color: #1D2858;
+  }
+}
+input {
+  &:focus-visible {
+    outline: 0px !important;
+  }
+}
+
+@media(min-width:1366px) {
+  .container {
+    max-width: 1366px;
+    padding: 0 50px;
+  }
+}
+.over_hidden {
+  overflow: hidden;
+  display: inline-block;
+}
+.card-container {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 0 20px;
+  .StripeElement {
+    height: 50px;
+    border: 1px solid #E4E4E4;
+    border-radius: 5px;
+    padding: 15px 20px;
+  }
+}
+.outline_btn, .btn_animated {
+  svg {
+    margin: 0 auto;
+  }
+  &:hover {
+    svg {
+      fill: #2c5ca0;
+    }
+  }
+}
+
+.swal2-html-container{
+  display: block !important;
+}

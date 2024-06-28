@@ -2,5 +2,6 @@
   "/not-found": "app/not-found.js",
   "/(private)/page": "app/(private)/page.js",
   "/(public)/login/page": "app/(public)/login/page.js",
-  "/(private)/home/page": "app/(private)/home/page.js"
+  "/(private)/home/page": "app/(private)/home/page.js",
+  "/(private)/single-class/[slug]/page": "app/(private)/single-class/[slug]/page.js"
 }

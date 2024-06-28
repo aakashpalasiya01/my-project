@@ -10,8 +10,16 @@ import isFavorites from "@/assets/images/icons/favorites_icn.svg";
 import closedWatch from "@/assets/images/icons/closed_watch.svg";
 import classImg from '@/assets/images/gym-6.webp'
 import playicn from "@/assets/images/icons/play_icn.svg";
+import SkillsDictionary from "../Home/SkillsDictionary";
+import Classes from "../Home/Classes";
 
 function WatchList() {
+
+return <>
+      <SkillsDictionary />
+      <Classes  />
+</>
+
 
   return (
     <main className="main_content">

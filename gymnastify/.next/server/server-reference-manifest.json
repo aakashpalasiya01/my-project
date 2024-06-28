@@ -5,13 +5,15 @@
         "app/(private)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
         "app/not-found": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
         "app/(public)/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
-        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
+        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
+        "app/(private)/single-class/[slug]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/(private)/page": "action-browser",
         "app/not-found": "action-browser",
         "app/(public)/login/page": "action-browser",
-        "app/(private)/home/page": "action-browser"
+        "app/(private)/home/page": "action-browser",
+        "app/(private)/single-class/[slug]/page": "action-browser"
       }
     },
     "75b4dce4e943d8faa4ee0af3b83d6e685a144121": {
@@ -19,13 +21,15 @@
         "app/(private)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
         "app/not-found": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
         "app/(public)/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
-        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
+        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
+        "app/(private)/single-class/[slug]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/(private)/page": "action-browser",
         "app/not-found": "action-browser",
         "app/(public)/login/page": "action-browser",
-        "app/(private)/home/page": "action-browser"
+        "app/(private)/home/page": "action-browser",
+        "app/(private)/single-class/[slug]/page": "action-browser"
       }
     },
     "ebb02e0f7ff9fa8a1e6adf43e6da10a10eded5c1": {
@@ -33,13 +37,15 @@
         "app/(private)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
         "app/not-found": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
         "app/(public)/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
-        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
+        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
+        "app/(private)/single-class/[slug]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/(private)/page": "action-browser",
         "app/not-found": "action-browser",
         "app/(public)/login/page": "action-browser",
-        "app/(private)/home/page": "action-browser"
+        "app/(private)/home/page": "action-browser",
+        "app/(private)/single-class/[slug]/page": "action-browser"
       }
     },
     "59c4390227dadbbb99776122b214e7993eb7c529": {
@@ -47,13 +53,15 @@
         "app/(private)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
         "app/not-found": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
         "app/(public)/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
-        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
+        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
+        "app/(private)/single-class/[slug]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/(private)/page": "action-browser",
         "app/not-found": "action-browser",
         "app/(public)/login/page": "action-browser",
-        "app/(private)/home/page": "action-browser"
+        "app/(private)/home/page": "action-browser",
+        "app/(private)/single-class/[slug]/page": "action-browser"
       }
     },
     "72c577e4497f9eed95abc96fdc10251b0cdf4efd": {
@@ -61,13 +69,15 @@
         "app/(private)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
         "app/not-found": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
         "app/(public)/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
-        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
+        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
+        "app/(private)/single-class/[slug]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/(private)/page": "action-browser",
         "app/not-found": "action-browser",
         "app/(public)/login/page": "action-browser",
-        "app/(private)/home/page": "action-browser"
+        "app/(private)/home/page": "action-browser",
+        "app/(private)/single-class/[slug]/page": "action-browser"
       }
     },
     "bfb790f262281bde4ab4dab027f63056c89ff735": {
@@ -75,13 +85,15 @@
         "app/(private)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
         "app/not-found": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
         "app/(public)/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%5D&__client_imported__=true!",
-        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
+        "app/(private)/home/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!",
+        "app/(private)/single-class/[slug]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Futils%2FRevalidateService.ts%22%2C%5B%22revalidateCardList%22%2C%22revalidateAllLayout%22%2C%22revalidateMySubscription%22%5D%5D%2C%5B%22%2Fhome%2Fbitcot%2FDocuments%2Fmy-project%2Fgymnastify%2Fsrc%2Fstore%2FserverApiAction%2FserverApis.ts%22%2C%5B%22post%22%2C%22get%22%2C%22del%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/(private)/page": "action-browser",
         "app/not-found": "action-browser",
         "app/(public)/login/page": "action-browser",
-        "app/(private)/home/page": "action-browser"
+        "app/(private)/home/page": "action-browser",
+        "app/(private)/single-class/[slug]/page": "action-browser"
       }
     },
     "e706e6519ea182b4b9721224b4d4e5ed5d7a8532": {
@@ -94,5 +106,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "FBVknu5ur8laaJE9myz9Vmzyx5BFRqE8gG1/TG0y5ws="
+  "encryptionKey": "OPWKPP2GNzjyv4aCI+ruEMYDgbNx1oiVnNHdjNP8rTM="
 }

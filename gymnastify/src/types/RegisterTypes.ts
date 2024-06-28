@@ -107,6 +107,7 @@ export interface RegisterClassTs {
   LoadedRegisterBanner: boolean;
   RegVideoLoader: boolean;
   LevelSkill:string;
+  classes?
  
 }
 
@@ -126,3 +127,31 @@ export interface ParamsType {
   user_id: string;
   class_id: number;
 }
+
+export type classPayLoadType = {
+
+
+
+
+  page: number;
+  per_page: number;
+  level_skills: any;
+  search: string;
+  order_by?: string;
+  order: string;
+  class_data?: number;
+  total_data?: number;
+  group?: string;
+  user_id?: string;
+  cache: Date;
+  class_id?: number;
+};
+export type defaultparameterType = {
+  page: number;
+  per_page: number;
+  group: string;
+  cache?: number ;
+  level_skills: string;
+  order: string;
+  search: string;
+};

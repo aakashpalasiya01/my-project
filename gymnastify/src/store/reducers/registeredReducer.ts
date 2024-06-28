@@ -1,7 +1,7 @@
 "use client";
 
 
-import {ClassType, ExploreCard, RegisteredReducersType, RegisterLevel} from '../../types/RegisterTypes'
+import { ExploreCard, RegisterClassTs, RegisteredReducersType, RegisterLevel} from '../../types/RegisterTypes'
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: RegisteredReducersType = {
@@ -25,7 +25,12 @@ const initialState: RegisteredReducersType = {
     skills: [],
   },
   Registerbanner:{},
-  RegisterClasses: [],
+  RegisterClasses:{
+    classes: [],
+    current_page: 0,
+    total_classes: 0,
+    total_pages: 0,
+  },
   ExploreCard: [],
   Loaded: false,
   LoadedClasses: false,
@@ -47,7 +52,7 @@ export const RegisteredSlice = createSlice({
     setSkill: (state, action: PayloadAction<string>) => {
       state.LevelSkill = action.payload;
     },
-    setRegisterClasses: (state, action: PayloadAction<ClassType[]>) => {
+    setRegisterClasses: (state, action: PayloadAction<RegisterClassTs>) => {
       state.RegisterClasses = action.payload;
     },
   
